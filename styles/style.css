@@ -55,12 +55,6 @@ section {
         align-items: center;
         justify-content: space-between;
     }
-
-    .mobile-logo {
-        flex-basis: 100%;
-        display: flex;
-        margin-left: 20px;
-    }
 }
 
 .header-button {
@@ -97,22 +91,6 @@ section {
 
 .burger-line:before {
     bottom: -10px;
-}
-
-@media (max-width: 1023px) {
-    .header-button {
-        border: none;
-        width: 28px;
-        height: 28px;
-    }
-
-    .burger-line {
-        height: 2px;
-    }
-
-    .burger-line:before {
-        width: 80%;
-    }
 }
 
 .search-block {
@@ -194,4 +172,34 @@ section {
     text-align: center;
 }
 
+.mobile-navigation-section {
+    display: none;
+}
+
+@media (max-width: 1023px) {
+    .mobile-navigation-section {
+        display: block;
+        background-color: #FFF;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .mobile-navigation-list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .mobile-navigation-link {
+        position: relative;
+    }
+
+    .mobile-navigation-link .cart-counter {
+        top: -5px;
+        right: -6px;
+        color: #FFF;
+    }
+}
 
