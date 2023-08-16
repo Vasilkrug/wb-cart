@@ -3,7 +3,7 @@
 
 body {
     background-color: #6725A8;
-    min-height: 100vh;
+    height: 100vh;
     font-family: "Segoe Regular", sans-serif;
 }
 
@@ -171,6 +171,14 @@ section {
     font-size: 10px;
     text-align: center;
 }
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.main {
+    flex: 1 1 auto;
+}
 
 .mobile-navigation-section {
     display: none;
@@ -200,6 +208,20 @@ section {
         top: -5px;
         right: -6px;
         color: #FFF;
+    }
+}
+
+.footer-info {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 24px;
+}
+@media (max-width: 1023px) {
+    .footer {
+        padding-bottom: 70px;
     }
 }
 
