@@ -10,7 +10,7 @@ body {
 section {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 16px 24px;
+    padding: 17px 24px 18px 24px;
 }
 
 @media (max-width: 1023px) {
@@ -171,15 +171,223 @@ section {
     font-size: 10px;
     text-align: center;
 }
+
 .wrapper {
     min-height: 100%;
     display: flex;
     flex-direction: column;
 }
+
 .main {
     flex: 1 1 auto;
+    background-color: #F6F6FA;
+    border-radius: 24px;
 }
 
+h2 {
+    font-family: "Segoe Bold", sans-serif;
+    font-size: 30px;
+}
+
+.basket-wrapper-left {
+    flex: 2;
+}
+
+.basket-wrapper {
+    display: flex;
+    gap: 33px;
+}
+
+.basket-wrapper h2 {
+    line-height: 41px;
+    letter-spacing: -0.05em;
+    margin-top: 16px;
+    margin-bottom: 23px;
+}
+
+.basket-items-selection {
+    display: flex;
+    justify-content: space-between;
+}
+
+.toggle-arrow {
+    cursor: pointer;
+}
+
+.checkbox-input {
+    position: absolute;
+    opacity: 0;
+}
+
+.checkbox {
+    display: block;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #C5C5C8;
+    border-radius: 5px;
+}
+
+.checkbox-label {
+    display: flex;
+    gap: 12px;
+}
+
+.checkbox:hover {
+    background: url("../assets/icons/checkbox.png") center no-repeat;
+    opacity: 0.5;
+}
+
+.checkbox-input:checked + .checkbox {
+    background: url("../assets/icons/checkbox.png") center no-repeat;
+    opacity: 1;
+    border: none;
+}
+
+.basket-wrapper-right {
+    padding-top: 5px;
+}
+
+.sale-info {
+    flex: 1;
+    background-color: #FFF;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15), 0px 0px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    width: 304px;
+    padding: 16px 25px 21px 23px;
+
+}
+
+@media (min-width: 1400px) {
+    .sale-info {
+        width: 429px;
+        padding: 16px 23px 21px 23px;
+    }
+}
+
+.total-sale-info-title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    font-family: "Segoe Bold", sans-serif;
+    font-style: normal;
+    line-height: 32px;
+    width: 100%;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+}
+
+.total-price {
+    letter-spacing: -0.04em;
+}
+
+.total-sale-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+}
+
+.total-sale-info span {
+    display: block;
+}
+
+.basket-info-container {
+    margin-top: 26px;
+}
+
+.basket-info-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.basket-info-title span, img {
+    display: block;
+    font-family: "Segoe Bold", sans-serif;
+}
+
+.address, .basket-pay {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.basket-pay {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: -2px;
+}
+
+.address span {
+    color: #CB11AB;
+    display: block;
+    padding-top: 4px;
+}
+
+.green-delivery {
+    margin-top: 10px;
+    padding: 13px 7px 12px 7px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    background-color: #F6F6FA;
+    border-radius: 8px;
+}
+
+.green {
+    color: #0CB477;
+    border-bottom: dashed 1px #0CB477;
+}
+.checkbox-pay-block {
+    margin-top: 6px;
+    font-size: 14px;
+    padding: 16px 7px 12px 7px;
+    background-color: #F6F6FA;
+    border-radius: 8px;
+}
+.checkbox-pay-block .checkbox-label {
+    gap: 9px;
+    letter-spacing: -0.5px;
+}
+.checkbox-pay-text {
+    font-size: 13px;
+    display: block;
+    margin: 5px 0 0 2px;
+}
+.confirm-pay {
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 44px;
+    font-family: "Segoe Bold", sans-serif;
+    background: #CB11AB;
+    border-radius: 8px;
+    color: #FFFFFF;
+}
+.rules-confirm {
+    margin-top: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 13px;
+}
+.rules-confirm label {
+    width: 20px;
+}
+.rules {
+    border-bottom: 1px solid #C5C5C8;
+    cursor: pointer;
+}
 .mobile-navigation-section {
     display: none;
 }
@@ -219,6 +427,7 @@ section {
     align-items: center;
     padding-top: 24px;
 }
+
 @media (max-width: 1023px) {
     .footer {
         padding-bottom: 70px;
