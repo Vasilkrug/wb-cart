@@ -10,6 +10,7 @@ export const basketData = [
         sale: 49.67,
         checked:false,
         count:1,
+        remains:3,
     },
     {
         id: 2,
@@ -22,6 +23,7 @@ export const basketData = [
         sale: 8.7,
         checked:false,
         count:1,
+        remains:300,
     },
     {
         id: 3,
@@ -34,5 +36,6 @@ export const basketData = [
         sale: 50,
         checked:false,
         count:1,
+        remains:3,
     },
 ]
