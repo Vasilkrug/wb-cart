@@ -110,13 +110,18 @@ section {
     width: 100%;
     padding: 12px 50px 16px 21px;
     border-radius: 50px;
-    background: #8551B9 url('../assets/icons/search.png') no-repeat right 23px center;
+    background: rgba(255, 255, 255, 0.2) url('../assets/icons/search.png') no-repeat right 23px center;
 }
 
 .search-input::placeholder {
     font-family: "Segoe Regular", sans-serif;
     font-size: 18px;
     color: #C2A8DC;
+}
+
+.search-input {
+    color: #FFF;
+    cursor: pointer;
 }
 
 .navbar {
@@ -208,6 +213,8 @@ h2 {
 .basket-items-selection {
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid #DEDEE1;
+    padding-bottom: 18px;
 }
 
 .toggle-arrow {
@@ -217,6 +224,9 @@ h2 {
 .checkbox-input {
     position: absolute;
     opacity: 0;
+    width: 22px;
+    height: 22px;
+    z-index: -1;
 }
 
 .checkbox {
@@ -225,11 +235,14 @@ h2 {
     height: 22px;
     border: 1px solid #C5C5C8;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .checkbox-label {
     display: flex;
     gap: 12px;
+    height: max-content;
+    align-items: center;
 }
 
 .checkbox:hover {
@@ -241,6 +254,126 @@ h2 {
     background: url("../assets/icons/checkbox.png") center no-repeat;
     opacity: 1;
     border: none;
+}
+
+.basket-items-list {
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.basket-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.basket-item-info-wrapper {
+    display: flex;
+    gap: 15px;
+}
+
+
+.basket-item-text {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    max-width: 275px;
+}
+
+.basket-item-text p {
+    line-height: 25px;
+
+}
+
+.basket-item-characters {
+    display: flex;
+    gap: 17px;
+}
+
+.basket-item-characters-hide {
+    display: none;
+}
+
+.basket-item-text span {
+    font-size: 13px;
+}
+
+.basket-item-location {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    color: #A0A0A4;
+    font-size: 13px;
+}
+
+.company {
+    display: flex;
+    gap: 8px;
+}
+
+.basket-item-controls-wrapper {
+    display: flex;
+    gap: 58px;
+}
+
+.basket-item-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.counter {
+    width: 100px;
+    height: 44px;
+    background-color: #FFF;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 3px 4px 3px;
+}
+
+.counter-button {
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 24px;
+    width: 24px;
+    height: 24px;
+}
+
+.max-products {
+    font-size: 13px;
+    color: #FF3B30;
+}
+
+.controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+.basket-item-price {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.item-price {
+    font-family: "Segoe Bold", sans-serif;
+    font-size: 18px;
+    letter-spacing: -0.4px;
+}
+
+.item-discount {
+    font-size: 13px;
+    margin-left: auto;
+    text-decoration: line-through;
+    color: #A0A0A4;
+    border-bottom: 1px dashed #A0A0A4;
+    width: max-content;
 }
 
 .basket-wrapper-right {
@@ -341,26 +474,42 @@ h2 {
     border-radius: 8px;
 }
 
+@media (max-width: 1023px) {
+    .green-delivery br {
+        display: none;
+    }
+}
+
+@media (min-width: 1399px) {
+    .green-delivery br {
+        display: none;
+    }
+}
+
 .green {
     color: #0CB477;
     border-bottom: dashed 1px #0CB477;
 }
+
 .checkbox-pay-block {
-    margin-top: 6px;
+    margin-top: 12px;
     font-size: 14px;
-    padding: 16px 7px 12px 7px;
+    padding: 10px 7px 12px 7px;
     background-color: #F6F6FA;
     border-radius: 8px;
 }
+
 .checkbox-pay-block .checkbox-label {
     gap: 9px;
     letter-spacing: -0.5px;
 }
+
 .checkbox-pay-text {
     font-size: 13px;
     display: block;
     margin: 5px 0 0 2px;
 }
+
 .confirm-pay {
     margin-top: 25px;
     width: 100%;
@@ -374,6 +523,7 @@ h2 {
     border-radius: 8px;
     color: #FFFFFF;
 }
+
 .rules-confirm {
     margin-top: 10px;
     display: flex;
@@ -381,13 +531,28 @@ h2 {
     gap: 6px;
     font-size: 13px;
 }
+
 .rules-confirm label {
     width: 20px;
 }
+
 .rules {
     border-bottom: 1px solid #C5C5C8;
     cursor: pointer;
 }
+
+@media (max-width: 1023px) {
+    .rules br {
+        display: none;
+    }
+}
+
+@media (min-width: 1399px) {
+    .rules br {
+        display: none;
+    }
+}
+
 .mobile-navigation-section {
     display: none;
 }

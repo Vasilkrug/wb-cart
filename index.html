@@ -4,6 +4,8 @@
     <meta charset="UTF-8" name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="./styles/style.css">
+    <script type="module" src="js/index.js"></script>
+    <script type="module" src="js/basket.js"></script>
     <title>Title</title>
 </head>
 <body>
@@ -69,18 +71,18 @@
                 <h2>Корзина</h2>
                 <div class="basket-items-selection">
                     <div class="select-all-block">
-                        <label class="checkbox-label" for="items-select">
-                            <input class="checkbox-input" id="items-select" type="checkbox">
+                        <label class="checkbox-label" for="select-all">
+                            <input class="checkbox-input" id="select-all" type="checkbox">
                             <span class="checkbox"></span>
                             <span class="select-all">Выбрать все</span>
                         </label>
                     </div>
                     <img class="toggle-arrow" src="assets/icons/arrow.png" alt="arrow">
                 </div>
-                <div class="basket-items">
-                    <div class="basket-item">
+                <div class="basket-items-wrapper">
+                    <ul class="basket-items-list">
 
-                    </div>
+                    </ul>
                 </div>
             </div>
             <div class="basket-wrapper-right">
@@ -113,7 +115,8 @@
                             </div>
                             <div class="green-delivery">
                                 <img src="assets/icons/shipping.png" alt="shipping">
-                                <p>Обратная доставка товаров на склад при отказе — <span class="green">бесплатно</span>
+                                <p>Обратная доставка товаров <br> на склад при отказе — <span
+                                        class="green">бесплатно</span>
                                 </p>
                             </div>
                         </div>
@@ -139,7 +142,8 @@
                                 <label>
                                     <img src="assets/icons/confirm.png" alt="confirm">
                                 </label>
-                                <p>Соглашаюсь с <span class="rules">правилами пользования торговой площадкой и возврата</span></p>
+                                <p>Соглашаюсь с <span class="rules">правилами <br> пользования торговой площадкой <br> и возврата</span>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -186,6 +190,5 @@
 
     </ul>
 </section>
-<script src="js/index.js"></script>
 </body>
 </html>
