@@ -3,9 +3,8 @@ import {model} from "./model.js";
 export const view = {
     render() {
         const basketItemsList = document.querySelector('.basket-items-list');
-        let liItems = ''
-        model.state.forEach((item,index) => {
-            liItems += `<li class="basket-item">
+        const html = model.state.map((item,index) => {
+            return `<li class="basket-item">
                             <div class="basket-item-info-wrapper">
                                 <label class="checkbox-label" for=${'item-' + item.id}>
                                     <input class="checkbox-input" id=${'item-' + item.id} type="checkbox" ${item.checked ? 'checked' : ''} data-index=${index}>
@@ -31,9 +30,9 @@ export const view = {
                             <div class="basket-item-controls-wrapper">
                                 <div class="basket-item-controls">
                                     <div class="counter">
-                                        <button class="counter-button" data-direction="minus">−</button>
+                                        <button class="counter-button" data-counter-id=${index} data-direction="minus">−</button>
                                         <div class="counter-value">${item.count}</div>
-                                        <button class="counter-button" data-direction="plus">+</button>
+                                        <button class="counter-button" data-counter-id=${index} data-direction="plus">+</button>
                                     </div>
                                     <div class="max-products">Осталось 2 шт.</div>
                                     <div class="controls">
@@ -47,9 +46,8 @@ export const view = {
                                 </div>
                             </div>
                         </li>`
-        });
-        basketItemsList.innerHTML = liItems;
-
+        }).join('');
+        basketItemsList.innerHTML = html;
     },
     init() {
         this.render()
