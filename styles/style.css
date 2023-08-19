@@ -492,7 +492,7 @@ h2 {
 }
 
 .checkbox-pay-block {
-    margin-top: 12px;
+    margin-top: 10px;
     font-size: 14px;
     padding: 10px 7px 12px 7px;
     background-color: #F6F6FA;
@@ -507,7 +507,7 @@ h2 {
 .checkbox-pay-text {
     font-size: 13px;
     display: block;
-    margin: 5px 0 0 2px;
+    margin: 8px 0 0 1px;
 }
 
 .confirm-pay {

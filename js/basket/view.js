@@ -1,9 +1,10 @@
 import {model} from "./model.js";
+import {setupControllers} from "./controllers.js";
 
 export const view = {
     render() {
         const basketItemsList = document.querySelector('.basket-items-list');
-        const html = model.state.map((item,index) => {
+        const html = model.state.map((item, index) => {
             return `<li class="basket-item">
                             <div class="basket-item-info-wrapper">
                                 <label class="checkbox-label" for=${'item-' + item.id}>
@@ -48,6 +49,7 @@ export const view = {
                         </li>`
         }).join('');
         basketItemsList.innerHTML = html;
+        setupControllers()
     },
     init() {
         this.render()

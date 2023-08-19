@@ -18,18 +18,14 @@ export const model = {
         }
         view.render()
     },
-    checkedAllItemsToggle(target){
-        let selected = false;
-        if (target.checked) {
-            selected = true
-        }
+    checkedAllItemsToggle(target) {
         this.state = this.state.map(item => {
-            item.checked = selected
+            item.checked = target.checked
             return item
         })
         view.render()
     },
-    checkedItemToggle(index){
+    checkedItemToggle(index) {
         this.state[index].checked = !this.state[index].checked;
 
     }
