@@ -7,7 +7,7 @@ export const basketData = [
         company: 'ООО Вайлдберриз',
         location: 'Коледино WB',
         price: 1051,
-        sale: 49.67,
+        sale: 50.3,
         checked:false,
         count:1,
         remains:3,

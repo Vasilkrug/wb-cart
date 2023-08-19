@@ -3,10 +3,14 @@ import {view} from "./view.js";
 
 export const model = {
     state: basketData,
+    totalPrice:0,
+    totalProduct:0,
+    noDiscountPrice:0,
+
     increment(index) {
         const count = this.state[index].count;
         const remains = this.state[index].remains;
-        if (count <= remains) {
+        if (count < remains) {
             this.state[index].count = this.state[index].count += 1
             view.render()
         }
@@ -28,5 +32,29 @@ export const model = {
     checkedItemToggle(index) {
         this.state[index].checked = !this.state[index].checked;
 
-    }
+    },
+    getTotalPrice(){
+        this.totalPrice = this.state.reduce((acc,item) => {
+            const totalPrice = Math.floor(item.count * item.price);
+            const discountPrice = Math.floor(totalPrice - (item.price * item.sale / 100 * item.count));
+            if (item.checked){
+                acc += discountPrice
+            }
+            return acc
+        },0)
+        view.renderPrice()
+    },
+    getTotalProduct(){
+        this.totalProduct = this.state.filter(item => item.checked).length;
+        view.renderPrice()
+    },
+    getNoDiscountPrice(){
+        this.noDiscountPrice = this.state.reduce((acc,item) => {
+            if (item.checked){
+                acc += Math.floor(item.price * item.count)
+            }
+            return acc
+        },0)
+        view.renderPrice()
+    },
 }
