@@ -59,6 +59,7 @@ export const view = {
         const totalProduct = document.querySelector('.total-product');
         const noDiscountPrice = document.querySelector('.no-discount');
         const discount = document.querySelector('.discount');
+        const cartCounter = document.querySelector('.cart-counter')
 
         const totalPriceHtml = model.totalPrice;
         const totalProductHtml = model.totalProduct
@@ -68,6 +69,7 @@ export const view = {
         totalProduct.innerHTML = `${totalProductHtml} товаров`
         noDiscountPrice.innerHTML = `${noDiscountPriceHtml} сом`
         discount.innerHTML = `${model.totalPrice - model.noDiscountPrice}`
+        cartCounter.innerHTML = `${totalProductHtml}`
 
     },
 
