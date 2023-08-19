@@ -1,17 +1,14 @@
-import {basketData} from "./data.js";
+import {model} from "./model.js";
 
-const model = {
-    state: basketData,
-}
-const view = {
+export const view = {
     render() {
         const basketItemsList = document.querySelector('.basket-items-list');
         let liItems = ''
-        model.state.forEach(item => {
+        model.state.forEach((item,index) => {
             liItems += `<li class="basket-item">
                             <div class="basket-item-info-wrapper">
                                 <label class="checkbox-label" for=${'item-' + item.id}>
-                                    <input class="checkbox-input" id=${'item-' + item.id} type="checkbox" ${item.checked ? 'checked' : ''}>
+                                    <input class="checkbox-input" id=${'item-' + item.id} type="checkbox" ${item.checked ? 'checked' : ''} data-index=${index}>
                                     <span class="checkbox"></span>
                                     <img src=${item.img} alt="t-shirt">
                                 </label>
@@ -26,7 +23,7 @@ const view = {
                                         <div class="address">${item.location}</div>
                                         <div class="company">
                                             ${item.company}
-                                            <span class="tooltip"><img src="../assets/icons/info.png" alt="info"></span>
+                                            <span class="tooltip"><img src="../../assets/icons/info.png" alt="info"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -40,8 +37,8 @@ const view = {
                                     </div>
                                     <div class="max-products">Осталось 2 шт.</div>
                                     <div class="controls">
-                                        <img src="../assets/icons/like.svg" alt="like">
-                                        <img src="../assets/icons/delete.svg" alt="delete">
+                                        <img src="../../assets/icons/like.svg" alt="like">
+                                        <img src="../../assets/icons/delete.svg" alt="delete">
                                     </div>
                                 </div>
                                 <div class="basket-item-price">
@@ -58,24 +55,3 @@ const view = {
         this.render()
     },
 }
-const selectAllBtn = document.getElementById('select-all')
-selectAllBtn.addEventListener('change', () => {
-    let selected = false;
-    if (selectAllBtn.checked) {
-        selected = true
-    }
-    model.state = model.state.map(item => {
-        item.checked = selected
-        return item
-    })
-
-    view.render()
-
-})
-
-
-view.init()
-
-
-
-
