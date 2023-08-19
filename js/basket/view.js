@@ -5,6 +5,9 @@ export const view = {
     render() {
         const basketItemsList = document.querySelector('.basket-items-list');
         const html = model.state.map((item, index) => {
+            const totalPrice = Math.floor(item.count * item.price);
+            const discountPrice = Math.floor(totalPrice - (item.price * item.sale / 100 * item.count));
+            const remains = item.remains - item.count;
             return `<li class="basket-item">
                             <div class="basket-item-info-wrapper">
                                 <label class="checkbox-label" for=${'item-' + item.id}>
@@ -35,15 +38,15 @@ export const view = {
                                         <div class="counter-value">${item.count}</div>
                                         <button class="counter-button" data-counter-id=${index} data-direction="plus">+</button>
                                     </div>
-                                    <div class="max-products">Осталось 2 шт.</div>
+                                    <div class="max-products">Осталось ${remains} шт.</div>
                                     <div class="controls">
                                         <img src="../../assets/icons/like.svg" alt="like">
                                         <img src="../../assets/icons/delete.svg" alt="delete">
                                     </div>
                                 </div>
                                 <div class="basket-item-price">
-                                    <div class="item-price">522 сом</div>
-                                    <div class="item-discount">1051 сом</div>
+                                    <div class="item-price">${discountPrice} сом</div>
+                                    <div class="item-discount">${totalPrice} сом</div>
                                 </div>
                             </div>
                         </li>`
@@ -51,7 +54,25 @@ export const view = {
         basketItemsList.innerHTML = html;
         setupControllers()
     },
+    renderPrice() {
+        const totalPrice = document.querySelector('.total-price');
+        const totalProduct = document.querySelector('.total-product');
+        const noDiscountPrice = document.querySelector('.no-discount');
+        const discount = document.querySelector('.discount');
+
+        const totalPriceHtml = model.totalPrice;
+        const totalProductHtml = model.totalProduct
+        const noDiscountPriceHtml = model.noDiscountPrice
+
+        totalPrice.innerHTML = `${totalPriceHtml} сом`;
+        totalProduct.innerHTML = `${totalProductHtml} товаров`
+        noDiscountPrice.innerHTML = `${noDiscountPriceHtml} сом`
+        discount.innerHTML = `${model.totalPrice - model.noDiscountPrice}`
+
+    },
+
     init() {
         this.render()
+        this.renderPrice()
     },
 }
