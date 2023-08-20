@@ -473,6 +473,7 @@ h2 {
 }
 
 .green-delivery {
+    position: relative;
     margin-top: 10px;
     padding: 13px 7px 12px 7px;
     display: flex;
@@ -535,6 +536,18 @@ h2 {
 
 .price-tooltip-text span:last-child {
     color: black;
+}
+
+.green-tooltip {
+    width: 288px;
+    right: -15px;
+    top: 90%;
+}
+
+@media (min-width: 1400px) {
+    .green-tooltip {
+        width: 410px;
+    }
 }
 
 @media (max-width: 1023px) {

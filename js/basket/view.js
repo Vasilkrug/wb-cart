@@ -52,13 +52,13 @@ export const view = {
                                     </div>
                                 </div>
                                 <div class="basket-item-price">
-                                    <div class="item-price">${discountPrice} сом</div>
+                                    <div class="item-price">${discountPrice.toLocaleString("ru-RU")} сом</div>
                                     <div class="item-discount">
-                                                <span class="item-discount tooltip">${totalPrice} сом</span>
+                                                <span class="item-discount tooltip">${totalPrice.toLocaleString("ru-RU")} сом</span>
                                                 <div class="tooltip-container price-tooltip">
                                                 <div class="price-tooltip-text">
                                                 <span>Скидка ${Math.floor(item.sale)}%</span>
-                                                <span>${Math.floor(discountPrice - totalPrice)} сом</span>
+                                                <span>${Math.floor(discountPrice - totalPrice).toLocaleString("ru-RU")} сом</span>
                                                 </div>
                                                 <div class="price-tooltip-text">
                                                 <span>Скидка покупателя 10%</span>
@@ -81,9 +81,9 @@ export const view = {
         const cartCounter = document.querySelector('.cart-counter');
 
 
-        totalPrice.innerHTML = `${model.totalPrice} сом`;
+        totalPrice.innerHTML = `${model.totalPrice.toLocaleString("ru-RU")} сом`;
         totalProduct.innerHTML = `${model.totalProduct} товаров`;
-        noDiscountPrice.innerHTML = `${model.noDiscountPrice} сом`;
+        noDiscountPrice.innerHTML = `${model.noDiscountPrice.toLocaleString("ru-RU")} сом`;
         discount.innerHTML = `${model.totalPrice - model.noDiscountPrice}`;
         cartCounter.innerHTML = `${model.totalProduct}`;
 
