@@ -51,8 +51,12 @@ section {
     padding: 21px 9px;
     width: 48px;
     height: 48px;
-    border: 1px solid #FFF;
+    border: 1px solid #A0A0A4;
     border-radius: 8px;
+}
+
+.header-button:hover {
+    border: 1px solid #FFF;
 }
 
 .burger-line {
@@ -101,17 +105,13 @@ section {
     padding: 12px 50px 16px 20px;
     border-radius: 50px;
     background: rgba(255, 255, 255, 0.2) url('../assets/icons/search.png') no-repeat right 20px center;
+    color: #FFF;
 }
 
 .search-input::placeholder {
     font-family: "Segoe Regular", sans-serif;
     font-size: 18px;
     color: #C2A8DC;
-}
-
-.search-input {
-    color: #FFF;
-    cursor: pointer;
 }
 
 .navbar {
@@ -456,6 +456,9 @@ h2 {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 8px;
+}
+.change {
+    cursor: pointer;
 }
 
 .basket-info-title span, img {
