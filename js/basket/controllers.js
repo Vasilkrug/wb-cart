@@ -58,6 +58,7 @@ export const setupControllers = () => {
         }
         model.setTotalPrice()
     })
+
 }
 view.init()
 

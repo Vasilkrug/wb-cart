@@ -221,6 +221,10 @@ h2 {
     cursor: pointer;
 }
 
+.arrow-hide {
+    transform: rotate(180deg);
+}
+
 .checkbox-input {
     position: absolute;
     opacity: 0;
@@ -312,6 +316,7 @@ h2 {
 .company {
     display: flex;
     gap: 8px;
+    position: relative;
 }
 
 .basket-item-controls-wrapper {
@@ -348,7 +353,8 @@ h2 {
     font-size: 13px;
     color: #FF3B30;
 }
-[data-hidden='true']{
+
+[data-hidden='true'] {
     display: none;
 }
 
@@ -373,6 +379,7 @@ h2 {
 }
 
 .item-discount {
+    position: relative;
     font-size: 13px;
     margin-left: auto;
     text-decoration: line-through;
@@ -477,6 +484,57 @@ h2 {
     line-height: 16px;
     background-color: #F6F6FA;
     border-radius: 8px;
+}
+
+.tooltip {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip:hover + .tooltip-container {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip-container {
+    position: absolute;
+    background-color: #FFF;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15), 0px 0px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    visibility: hidden;
+    opacity: 0;
+    padding: 11px 16px 13px;
+    transition: opacity 0.2s ease;
+    z-index: 2;
+}
+
+.info-tooltip {
+    width: 280px;
+    left: 0;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.info-tooltip .tooltip-title {
+    font-family: "Segoe Bold", sans-serif;
+}
+
+.price-tooltip {
+    width: 239px;
+    right: -15px;
+    top: 130%;
+}
+
+.price-tooltip-text {
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-tooltip-text span:last-child {
+    color: black;
 }
 
 @media (max-width: 1023px) {

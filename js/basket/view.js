@@ -26,7 +26,14 @@ export const view = {
                                         <div class="address">${item.location}</div>
                                         <div class="company">
                                             ${item.company}
-                                            <span class="tooltip"><img src="../../assets/icons/info.png" alt="info"></span>
+                                            <span>
+                                            <img class="tooltip" src="../../assets/icons/info.png" alt="info">
+                                            <div class="tooltip-container info-tooltip">
+                                            <div class="tooltip-title">OOO «МЕГАПРОФСТИЛЬ»</div>
+                                            <div class="tooltip-text">ОГРН: 5167746237148</div>
+                                            <div class="tooltip-text">129337, Москва, улица Красная Сосна, 2, корпус 1, стр. 1, помещение 2, офис 34</div>
+                                            </div>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -46,7 +53,19 @@ export const view = {
                                 </div>
                                 <div class="basket-item-price">
                                     <div class="item-price">${discountPrice} сом</div>
-                                    <div class="item-discount">${totalPrice} сом</div>
+                                    <div class="item-discount">
+                                                <span class="item-discount tooltip">${totalPrice} сом</span>
+                                                <div class="tooltip-container price-tooltip">
+                                                <div class="price-tooltip-text">
+                                                <span>Скидка ${Math.floor(item.sale)}%</span>
+                                                <span>${Math.floor(discountPrice - totalPrice)} сом</span>
+                                                </div>
+                                                <div class="price-tooltip-text">
+                                                <span>Скидка покупателя 10%</span>
+                                                <span>−30 сом</span>
+                                                </div>
+                                                </div>
+                                                       </div>
                                 </div>
                             </div>
                         </li>`
@@ -71,13 +90,11 @@ export const view = {
     },
     renderPayBtn() {
         const confirmPayBtn = document.querySelector('.confirm-pay');
-        if (confirmPayBtn.classList.contains('active-btn')){
+        if (confirmPayBtn.classList.contains('active-btn')) {
             confirmPayBtn.innerHTML = `Оплатить ${model.totalPrice} сом`
-        }else {
+        } else {
             confirmPayBtn.innerHTML = `Заказать`
         }
-
-
     },
     init() {
         this.render()
