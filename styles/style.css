@@ -348,6 +348,9 @@ h2 {
     font-size: 13px;
     color: #FF3B30;
 }
+[data-hidden='true']{
+    display: none;
+}
 
 .controls {
     display: flex;

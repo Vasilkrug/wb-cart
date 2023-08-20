@@ -8,6 +8,7 @@ export const view = {
             const totalPrice = Math.floor(item.count * item.price);
             const discountPrice = Math.floor(totalPrice - (item.price * item.sale / 100 * item.count));
             const remains = item.remains - item.count;
+            console.log(remains)
             return `<li class="basket-item">
                             <div class="basket-item-info-wrapper">
                                 <label class="checkbox-label" for=${'item-' + item.id}>
@@ -38,7 +39,7 @@ export const view = {
                                         <div class="counter-value">${item.count}</div>
                                         <button class="counter-button" data-counter-id=${index} data-direction="plus">+</button>
                                     </div>
-                                    <div class="max-products">Осталось ${remains} шт.</div>
+                                    <div class="max-products" data-hidden=${remains <= 2 ? 'false' : 'true'}>Осталось ${remains} шт.</div>
                                     <div class="controls">
                                         <img src="../../assets/icons/like.svg" alt="like">
                                         <img src="../../assets/icons/delete.svg" alt="delete">
