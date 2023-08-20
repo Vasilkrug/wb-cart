@@ -59,22 +59,30 @@ export const view = {
         const totalProduct = document.querySelector('.total-product');
         const noDiscountPrice = document.querySelector('.no-discount');
         const discount = document.querySelector('.discount');
-        const cartCounter = document.querySelector('.cart-counter')
+        const cartCounter = document.querySelector('.cart-counter');
 
-        const totalPriceHtml = model.totalPrice;
-        const totalProductHtml = model.totalProduct
-        const noDiscountPriceHtml = model.noDiscountPrice
 
-        totalPrice.innerHTML = `${totalPriceHtml} сом`;
-        totalProduct.innerHTML = `${totalProductHtml} товаров`
-        noDiscountPrice.innerHTML = `${noDiscountPriceHtml} сом`
-        discount.innerHTML = `${model.totalPrice - model.noDiscountPrice}`
-        cartCounter.innerHTML = `${totalProductHtml}`
+        totalPrice.innerHTML = `${model.totalPrice} сом`;
+        totalProduct.innerHTML = `${model.totalProduct} товаров`;
+        noDiscountPrice.innerHTML = `${model.noDiscountPrice} сом`;
+        discount.innerHTML = `${model.totalPrice - model.noDiscountPrice}`;
+        cartCounter.innerHTML = `${model.totalProduct}`;
 
     },
+    renderPayBtn(){
+        const confirmPayBtn = document.querySelector('.confirm-pay');
+        confirmPayBtn.innerHTML = `Оплатить ${model.totalPrice} сом`
 
+    },
+    clearRender(){
+        const confirmPayBtn = document.querySelector('.confirm-pay');
+        confirmPayBtn.innerHTML = `Заказать`
+    },
     init() {
         this.render()
         this.renderPrice()
+        this.renderPayBtn()
+        this.clearRender()
     },
+
 }

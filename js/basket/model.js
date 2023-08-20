@@ -31,9 +31,8 @@ export const model = {
     },
     checkedItemToggle(index) {
         this.state[index].checked = !this.state[index].checked;
-
     },
-    getTotalPrice(){
+    setTotalPrice(){
         this.totalPrice = this.state.reduce((acc,item) => {
             const totalPrice = Math.floor(item.count * item.price);
             const discountPrice = Math.floor(totalPrice - (item.price * item.sale / 100 * item.count));
@@ -44,11 +43,16 @@ export const model = {
         },0)
         view.renderPrice()
     },
-    getTotalProduct(){
-        this.totalProduct = this.state.filter(item => item.checked).length;
+    setTotalProduct(){
+        this.totalProduct = this.state.reduce((acc,item) => {
+            if (item.checked){
+                acc += item.count
+            }
+            return acc
+        },0);
         view.renderPrice()
     },
-    getNoDiscountPrice(){
+    setNoDiscountPrice(){
         this.noDiscountPrice = this.state.reduce((acc,item) => {
             if (item.checked){
                 acc += Math.floor(item.price * item.count)
@@ -57,4 +61,8 @@ export const model = {
         },0)
         view.renderPrice()
     },
+    getTotalPriceForBtn(isActive){
+        isActive ? view.renderPayBtn() : view.clearRender()
+
+    }
 }
