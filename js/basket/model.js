@@ -19,8 +19,9 @@ export const model = {
         const count = this.state[index].count;
         if (count >= 2) {
             this.state[index].count = this.state[index].count -= 1
+            view.render()
         }
-        view.render()
+
     },
     checkedAllItemsToggle(target) {
         this.state = this.state.map(item => {
@@ -43,6 +44,7 @@ export const model = {
         },0)
         view.renderPrice()
         view.renderPayBtn()
+        view.renderHideInfo()
     },
     setTotalProduct(){
         this.totalProduct = this.state.reduce((acc,item) => {
@@ -52,6 +54,7 @@ export const model = {
             return acc
         },0);
         view.renderPrice()
+        view.renderHideInfo()
     },
     setNoDiscountPrice(){
         this.noDiscountPrice = this.state.reduce((acc,item) => {

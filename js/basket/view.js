@@ -96,10 +96,24 @@ export const view = {
             confirmPayBtn.innerHTML = `Заказать`
         }
     },
+    renderHideInfo() {
+        const arrow = document.querySelector('.toggle-arrow');
+        const selectAllLabel = document.querySelector('.select-all-label');
+        const hideInfo = document.querySelector('.hide-info')
+        if (arrow.classList.contains('arrow-hidden')) {
+            selectAllLabel.style.display = 'none'
+            hideInfo.style.display = 'block'
+            hideInfo.innerHTML = `${model.totalProduct} товаров · ${model.totalPrice.toLocaleString('ru-RU')} сом`
+        } else {
+            hideInfo.style.display = 'none'
+            selectAllLabel.style.display = 'flex'
+        }
+    },
     init() {
         this.render()
         this.renderPrice()
         this.renderPayBtn()
+        this.renderHideInfo()
     },
 
 }

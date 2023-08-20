@@ -255,6 +255,12 @@ h2 {
     border: none;
 }
 
+.hide-info {
+    display: none;
+    font-family: "Segoe Semibold", sans-serif;
+    line-height: 24px;
+}
+
 .basket-items-list {
     padding-top: 12px;
     display: flex;
@@ -457,6 +463,7 @@ h2 {
     align-items: center;
     margin-bottom: 8px;
 }
+
 .change {
     cursor: pointer;
 }
