@@ -109,11 +109,45 @@ export const view = {
             selectAllLabel.style.display = 'flex'
         }
     },
+    renderMissingItems(){
+        const missingItemsList = document.querySelector('.missing-items-list')
+        const html = model.state.map((item) => {
+            return `<li class="basket-item missing-item">
+                            <div class="basket-item-info-wrapper">
+                                    <img src=${item.img} alt="t-shirt">
+                                <div class="basket-item-text missing-item-text">
+                                    <p>${item.name}</p>
+                                    <div class=${item.characters.length ? "basket-item-characters" : "basket-item-characters-hide"}>
+                                    ${item.characters.map(character => {
+                                    return `<span>${character}</span>`
+                                     }).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="basket-item-controls-wrapper">
+                                <div class="basket-item-controls">
+                                    <div class="controls">
+                                        <img src="../../assets/icons/like.svg" alt="like">
+                                        <img src="../../assets/icons/delete.svg" alt="delete">
+                                    </div>
+                                </div>
+                                <div class="basket-item-price hidden">
+                                    <div class="item-price">${0} <span class="currency">сом</span></div>
+                                    <div class="item-discount">
+                                                <span class="item-discount tooltip">${0} сом</span>
+                                                </div>
+                                </div>
+                            </div>
+                        </li>`
+        }).join('');
+        missingItemsList.innerHTML = html
+    },
     init() {
         this.render()
         this.renderPrice()
         this.renderPayBtn()
         this.renderHideInfo()
+        this.renderMissingItems()
     },
 
 }

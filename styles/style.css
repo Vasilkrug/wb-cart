@@ -19,6 +19,10 @@ section {
     }
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .header-section {
     display: flex;
     align-items: center;
@@ -199,6 +203,10 @@ h2 {
     letter-spacing: -0.05em;
     margin-top: 16px;
     margin-bottom: 23px;
+}
+
+.basket-items-wrapper {
+    margin-bottom: 33px;
 }
 
 .basket-items-selection {
@@ -396,6 +404,27 @@ h2 {
     color: #A0A0A4;
     border-bottom: 1px dashed #A0A0A4;
     width: max-content;
+}
+
+.missing-items-list {
+    color: #A0A0A4;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+.missing-items-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    font-family: "Segoe Semibold", sans-serif;
+    line-height: 24px;
+}
+.missing-item-text {
+    max-width: 309px;
+}
+.missing-item-text br {
+    display: none;
 }
 
 .basket-wrapper-right {
