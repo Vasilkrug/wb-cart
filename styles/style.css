@@ -10,7 +10,7 @@ body {
 section {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 17px 24px 18px 24px;
+    padding: 17px 24px 16px 24px;
 }
 
 @media (max-width: 1023px) {
@@ -28,16 +28,6 @@ section {
     display: flex;
     gap: 16px;
     align-items: center;
-    letter-spacing: 1px;
-}
-
-.header-title {
-    font-family: "Segoe Semibold", sans-serif;
-    font-size: 23px;
-    line-height: 24px;
-    color: #FFF;
-    text-transform: uppercase;
-    width: 106px;
 }
 
 .mobile-menu {
@@ -95,7 +85,7 @@ section {
 
 .search-block {
     flex-grow: 1;
-    margin-left: 30px;
+    margin-left: 32px;
     margin-right: 32px;
 }
 
@@ -108,9 +98,9 @@ section {
 .search-input {
     position: relative;
     width: 100%;
-    padding: 12px 50px 16px 21px;
+    padding: 12px 50px 16px 20px;
     border-radius: 50px;
-    background: rgba(255, 255, 255, 0.2) url('../assets/icons/search.png') no-repeat right 23px center;
+    background: rgba(255, 255, 255, 0.2) url('../assets/icons/search.png') no-repeat right 20px center;
 }
 
 .search-input::placeholder {
@@ -126,6 +116,8 @@ section {
 
 .navbar {
     display: flex;
+    align-items: center;
+    height: 56px;
 }
 
 @media (max-width: 1023px) {
@@ -152,11 +144,11 @@ section {
 }
 
 .user-icon {
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
 .cart-icon {
-    margin-bottom: 3px;
+    margin-bottom: 6px;
     margin-right: 6px;
 }
 
@@ -204,7 +196,6 @@ h2 {
 }
 
 .basket-wrapper h2 {
-    line-height: 41px;
     letter-spacing: -0.05em;
     margin-top: 16px;
     margin-bottom: 23px;
@@ -215,6 +206,10 @@ h2 {
     justify-content: space-between;
     border-bottom: 1px solid #DEDEE1;
     padding-bottom: 18px;
+}
+
+.select-all {
+    letter-spacing: -0.1px;
 }
 
 .toggle-arrow {
@@ -244,7 +239,7 @@ h2 {
 
 .checkbox-label {
     display: flex;
-    gap: 12px;
+    gap: 11px;
     height: max-content;
     align-items: center;
 }
@@ -264,25 +259,24 @@ h2 {
     padding-top: 12px;
     display: flex;
     flex-direction: column;
-    gap: 17px;
+    gap: 29px;
 }
 
 .basket-item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
 }
 
 .basket-item-info-wrapper {
     display: flex;
-    gap: 15px;
+    gap: 17px;
 }
 
 
 .basket-item-text {
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 6px;
     max-width: 275px;
 }
 
@@ -311,6 +305,7 @@ h2 {
     gap: 4px;
     color: #A0A0A4;
     font-size: 13px;
+    line-height: 16px;
 }
 
 .company {
@@ -339,6 +334,11 @@ h2 {
     justify-content: space-between;
     align-items: center;
     padding: 0px 3px 4px 3px;
+}
+
+.counter-value {
+    width: 44px;
+    text-align: center;
 }
 
 .counter-button {
@@ -374,8 +374,12 @@ h2 {
 
 .item-price {
     font-family: "Segoe Bold", sans-serif;
-    font-size: 18px;
-    letter-spacing: -0.4px;
+    font-size: 20px;
+    line-height: 22px;
+}
+
+.currency {
+    font-size: 16px;
 }
 
 .item-discount {
@@ -418,11 +422,18 @@ h2 {
     line-height: 32px;
     width: 100%;
     letter-spacing: -0.01em;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .total-price {
     letter-spacing: -0.04em;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.total {
+    font-size: 24px;
+    line-height: 32px;
 }
 
 .total-sale-info {
@@ -444,7 +455,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 
 .basket-info-title span, img {
@@ -474,8 +485,8 @@ h2 {
 
 .green-delivery {
     position: relative;
-    margin-top: 10px;
-    padding: 13px 7px 12px 7px;
+    margin-top: 9px;
+    padding: 13px 10px 9px 8px;
     display: flex;
     align-items: center;
     gap: 9px;
@@ -570,24 +581,27 @@ h2 {
 .checkbox-pay-block {
     margin-top: 10px;
     font-size: 14px;
-    padding: 10px 7px 12px 7px;
+    padding: 10px 7px 12px 9px;
     background-color: #F6F6FA;
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .checkbox-pay-block .checkbox-label {
     gap: 9px;
-    letter-spacing: -0.5px;
+    font-size: 13px;
+    line-height: 16px;
 }
 
 .checkbox-pay-text {
     font-size: 13px;
-    display: block;
-    margin: 8px 0 0 1px;
+    line-height: 16px;
 }
 
 .confirm-pay {
-    margin-top: 25px;
+    margin-top: 23px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -601,7 +615,7 @@ h2 {
 }
 
 .rules-confirm {
-    margin-top: 10px;
+    margin-top: 12px;
     display: flex;
     align-items: flex-start;
     gap: 6px;
