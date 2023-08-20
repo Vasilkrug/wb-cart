@@ -42,6 +42,7 @@ export const model = {
             return acc
         },0)
         view.renderPrice()
+        view.renderPayBtn()
     },
     setTotalProduct(){
         this.totalProduct = this.state.reduce((acc,item) => {
@@ -61,8 +62,4 @@ export const model = {
         },0)
         view.renderPrice()
     },
-    getTotalPriceForBtn(isActive){
-        isActive ? view.renderPayBtn() : view.clearRender()
-
-    }
 }

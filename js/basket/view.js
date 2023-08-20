@@ -8,7 +8,6 @@ export const view = {
             const totalPrice = Math.floor(item.count * item.price);
             const discountPrice = Math.floor(totalPrice - (item.price * item.sale / 100 * item.count));
             const remains = item.remains - item.count;
-            console.log(remains)
             return `<li class="basket-item">
                             <div class="basket-item-info-wrapper">
                                 <label class="checkbox-label" for=${'item-' + item.id}>
@@ -70,20 +69,20 @@ export const view = {
         cartCounter.innerHTML = `${model.totalProduct}`;
 
     },
-    renderPayBtn(){
+    renderPayBtn() {
         const confirmPayBtn = document.querySelector('.confirm-pay');
-        confirmPayBtn.innerHTML = `Оплатить ${model.totalPrice} сом`
+        if (confirmPayBtn.classList.contains('active-btn')){
+            confirmPayBtn.innerHTML = `Оплатить ${model.totalPrice} сом`
+        }else {
+            confirmPayBtn.innerHTML = `Заказать`
+        }
 
-    },
-    clearRender(){
-        const confirmPayBtn = document.querySelector('.confirm-pay');
-        confirmPayBtn.innerHTML = `Заказать`
+
     },
     init() {
         this.render()
         this.renderPrice()
         this.renderPayBtn()
-        this.clearRender()
     },
 
 }

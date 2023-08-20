@@ -7,7 +7,7 @@ export const setupControllers = () => {
     const plusBtns = document.querySelectorAll('[data-direction="plus"]');
     const minusBtns = document.querySelectorAll('[data-direction="minus"]');
     const payInput = document.getElementById('select-pay');
-
+    const confirmPayBtn = document.querySelector('.confirm-pay');
 
     selectAllCheckbox.addEventListener('change', () => {
         model.checkedAllItemsToggle(selectAllCheckbox)
@@ -51,7 +51,12 @@ export const setupControllers = () => {
     })
 
     payInput.addEventListener('change', () => {
-        model.getTotalPriceForBtn(payInput.checked)
+        if (payInput.checked) {
+            confirmPayBtn.classList.add('active-btn')
+        } else {
+            confirmPayBtn.classList.remove('active-btn')
+        }
+        model.setTotalPrice()
     })
 }
 view.init()
