@@ -12,11 +12,16 @@ export const view = {
                             <div class="basket-item-info-wrapper">
                                 <label class="checkbox-label" for=${'item-' + item.id}>
                                     <input class="checkbox-input" id=${'item-' + item.id} type="checkbox" ${item.checked ? 'checked' : ''} data-index=${index}>
-                                    <span class="checkbox"></span>
-                                    <img src=${item.img} alt="t-shirt">
+                                    <span class="checkbox checkbox-item"></span>
+                                    <img class="basket-item-img" src=${item.img} alt="t-shirt">
                                 </label>
                                 <div class="basket-item-text">
-                                    <p>${item.name}</p>
+                                <div class="basket-item-price mobile-price">
+                                    <div class="item-price">${discountPrice.toLocaleString("ru-RU")} сом</div>
+                                    <div class="item-discount"> ${totalPrice.toLocaleString("ru-RU")} сом
+                                    </div>
+                                </div>
+                                    <p class="item-name">${item.name}</p>
                                     <div class=${item.characters.length ? "basket-item-characters" : "basket-item-characters-hide"}>
                                     ${item.characters.map(character => {
                 return `<span>${character}</span>`
@@ -129,7 +134,7 @@ export const view = {
                                 </div>
                             </div>
                             <div class="basket-item-controls-wrapper">
-                                <div class="basket-item-controls">
+                                <div class="basket-item-controls missing-controls">
                                     <div class="controls">
                                         <img src="../../assets/icons/like.svg" alt="like">
                                         <img src="../../assets/icons/delete.svg" alt="delete">

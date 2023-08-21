@@ -1,5 +1,6 @@
 import {model} from "./model.js";
 import {view} from "./view.js";
+import {hideBlock} from "./utils.js";
 
 export const setupControllers = () => {
     const selectItemsCheckbox = document.querySelectorAll('[data-index]');
@@ -63,16 +64,6 @@ payInput.addEventListener('change', () => {
     }
     model.setTotalPrice()
 })
-const hideBlock = (target, container, displayOnVisible) => {
-    target.classList.toggle('arrow-hidden')
-    if (target.classList.contains('arrow-hidden')) {
-        target.style.transform = 'rotate(180deg)'
-        container.style.display = 'none'
-    } else {
-        target.style.transform = 'rotate(0)'
-        container.style.display = displayOnVisible
-    }
-}
 
 arrow.addEventListener('click', () => {
     hideBlock(arrow, basketItemsWrapper, 'block')
