@@ -35,6 +35,8 @@ export const setupControllers = () => {
     })
 }
 const arrow = document.querySelector('.toggle-arrow');
+const missingItemsArrow = document.querySelector('.missing-items-arrow');
+const missingItemsList = document.querySelector('.missing-items-list');
 const basketItemsWrapper = document.querySelector('.basket-items-wrapper')
 const selectAllCheckbox = document.getElementById('select-all');
 const payInput = document.getElementById('select-pay');
@@ -61,18 +63,24 @@ payInput.addEventListener('change', () => {
     }
     model.setTotalPrice()
 })
+const hideBlock = (target, container, displayOnVisible) => {
+    target.classList.toggle('arrow-hidden')
+    if (target.classList.contains('arrow-hidden')) {
+        target.style.transform = 'rotate(180deg)'
+        container.style.display = 'none'
+    } else {
+        target.style.transform = 'rotate(0)'
+        container.style.display = displayOnVisible
+    }
+}
 
 arrow.addEventListener('click', () => {
-    arrow.classList.toggle('arrow-hidden')
-    if (arrow.classList.contains('arrow-hidden')) {
-        arrow.style.transform = 'rotate(180deg)'
-        basketItemsWrapper.style.display = 'none'
-    } else {
-        arrow.style.transform = 'rotate(0)'
-        basketItemsWrapper.style.display = 'block'
-    }
+    hideBlock(arrow, basketItemsWrapper, 'block')
     model.setTotalPrice()
     model.setTotalProduct()
+})
+missingItemsArrow.addEventListener('click', () => {
+    hideBlock(missingItemsArrow, missingItemsList, 'flex')
 })
 view.init()
 

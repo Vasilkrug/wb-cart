@@ -100,12 +100,16 @@ export const view = {
         const arrow = document.querySelector('.toggle-arrow');
         const selectAllLabel = document.querySelector('.select-all-label');
         const hideInfo = document.querySelector('.hide-info')
+        const basketItemsSelection = document.querySelector('.basket-items-selection');
+
         if (arrow.classList.contains('arrow-hidden')) {
             selectAllLabel.style.display = 'none'
             hideInfo.style.display = 'block'
+            basketItemsSelection.style.marginBottom = '16px'
             hideInfo.innerHTML = `${model.totalProduct} товаров · ${model.totalPrice.toLocaleString('ru-RU')} сом`
         } else {
             hideInfo.style.display = 'none'
+            basketItemsSelection.style.marginBottom = '0px'
             selectAllLabel.style.display = 'flex'
         }
     },
@@ -114,7 +118,7 @@ export const view = {
         const html = model.state.map((item) => {
             return `<li class="basket-item missing-item">
                             <div class="basket-item-info-wrapper">
-                                    <img src=${item.img} alt="t-shirt">
+                                    <img src=${item.missingImg} alt="t-shirt">
                                 <div class="basket-item-text missing-item-text">
                                     <p>${item.name}</p>
                                     <div class=${item.characters.length ? "basket-item-characters" : "basket-item-characters-hide"}>
