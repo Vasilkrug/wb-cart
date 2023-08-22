@@ -163,6 +163,37 @@ export const view = {
         }).join('');
         missingItemsList.innerHTML = html
     },
+    renderAddressModal(payList){
+        const container = document.querySelector('.main')
+        const addressHtml = `<div class="pay-list">
+                        ${payList.map(item => {
+                            return `<label class="radio-label" for=radio-${item.id}>
+                            <input class="radio-input" type=radio-${item.id} id=radio-${item.id} data-radio-index=${item.id}>
+                            <span class="radio-checkbox"></span>
+                            <div class="pay-card">
+                                <img src=${item.img} alt="pay-card">
+                                <span>${item.cardNumber}</span>
+                            </div>
+                        </label>`
+        }).join('')}
+                    </div>`
+      const modal = `<div class="modal" data-active="pay-modal">
+            <div class="modal-title">
+                <h2>Способ оплаты</h2>
+                <svg class="modal-close" width="15" height="15" fill="#AAAAAE" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/>
+                </svg>
+            </div>
+            <div class="modal-content">
+                    ${addressHtml}
+            </div>
+            <div class="modal-footer">
+                <button class="button modal-button">Выбрать</button>
+            </div>
+        </div>
+        <div class="overlay"></div>`
+        container.insertAdjacentHTML('afterend',modal)
+    },
     init() {
         this.render()
         this.renderPrice()

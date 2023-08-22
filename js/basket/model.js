@@ -1,8 +1,9 @@
-import {basketData} from "../data.js";
+import {basketData, payMethodslist} from "../data.js";
 import {view} from "./view.js";
 
 export const model = {
     state: basketData,
+    payList:payMethodslist,
     totalPrice:0,
     totalProduct:0,
     noDiscountPrice:0,
@@ -64,5 +65,8 @@ export const model = {
             return acc
         },0)
         view.renderPrice()
+    },
+    getPayList(){
+      view.renderAddressModal(this.payList)
     },
 }

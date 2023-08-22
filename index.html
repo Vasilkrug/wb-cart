@@ -152,12 +152,14 @@
                             <h2>Способ оплаты</h2>
                             <a class="pay-method-modal-link" href="#">Изменить</a>
                         </div>
-                                <div class="basket-form-pay-method">
-                                    <img src="assets/icons/mir-pay.png" alt="">
-                                    <span class="card-number">1234 56•• •••• 1234</span>
-                                    <span class="validity-period">01/30</span>
-                                </div>
-                                <span class="pay-info">Спишем оплату с карты при получении</span>
+                        <div class="basket-form-pay-method">
+                            <div class="pay no-gap">
+                                <img src="assets/icons/mir-pay.png" alt="">
+                                <span class="card-number">1234 56•• •••• 1234</span>
+                            </div>
+                            <span class="validity-period">01/30</span>
+                        </div>
+                        <span class="pay-info">Спишем оплату с карты при получении</span>
                     </div>
 
 
@@ -185,7 +187,8 @@
                         <div class="basket-info-container">
                             <div class="basket-info-title">
                                 <span>Доставка в пункт выдачи</span>
-                                <img class="change change-address" src="assets/icons/pencil.png" alt="pencil">
+                                <a class="delivery-modal-link" href="#"><img class="change change-address"
+                                                                             src="assets/icons/pencil.png" alt="pencil"></a>
                             </div>
                             <div class="address">
                                 <p class="address-text">Бишкек, улица Ахматбека Суюмбаева, 12/1</p>
@@ -204,11 +207,14 @@
                         <div class="basket-info-container">
                             <div class="basket-info-title">
                                 <span>Оплата картой</span>
-                                <img class="change change-pay" src="assets/icons/pencil.png" alt="pencil">
+                                <a class="pay-method-modal-link" href="#"><img class="change change-pay"
+                                                                               src="assets/icons/pencil.png"
+                                                                               alt="pencil"></a>
                             </div>
                             <div class="basket-pay">
-                                <img src="assets/icons/mir-pay.png" alt="mir-pay">
-                                <span>1234 12•• •••• 1234</span>
+                                <div class="pay">
+                                    <img src="assets/icons/mir-pay.png" alt="mir-pay">
+                                    <span class="card-number">1234 12•• •••• 1234</span></div>
                             </div>
                             <div class="checkbox-pay-block">
                                 <label class="checkbox-label" for="select-pay">
@@ -218,7 +224,7 @@
                                 </label>
                                 <span class="checkbox-pay-text">Спишем оплату с карты при получении</span>
                             </div>
-                            <button class="confirm-pay">Заказать</button>
+                            <button class="button confirm-pay">Заказать</button>
                             <div class="rules-confirm">
                                 <label>
                                     <img src="assets/icons/confirm.png" alt="confirm">
@@ -231,6 +237,7 @@
                 </div>
             </div>
         </section>
+
     </main>
     <footer class="footer">
         <section class="footer-info">

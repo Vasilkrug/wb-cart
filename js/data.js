@@ -41,4 +41,11 @@ export const basketData = [
         count:1,
         remains:3,
     },
+];
+
+export const payMethodslist = [
+    {id:1,img:'assets/icons/mir-pay.png',cardNumber:'1234 56•• •••• 1234'},
+    {id:2,img:'assets/icons/visa.svg',cardNumber:'1234 56•• •••• 1234'},
+    {id:3,img:'assets/icons/master-card.svg',cardNumber:'1234 56•• •••• 1234'},
+    {id:4,img:'assets/icons/maestro.svg',cardNumber:'1234 56•• •••• 1234'},
 ]

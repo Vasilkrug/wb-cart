@@ -42,6 +42,7 @@ const basketItemsWrapper = document.querySelector('.basket-items-wrapper')
 const selectAllCheckbox = document.getElementById('select-all');
 const payInput = document.getElementById('select-pay');
 const confirmPayBtn = document.querySelector('.confirm-pay');
+const payModalLinks = document.querySelectorAll('.pay-method-modal-link')
 
 selectAllCheckbox.addEventListener('change', () => {
     model.checkedAllItemsToggle(selectAllCheckbox)
@@ -72,6 +73,13 @@ arrow.addEventListener('click', () => {
 })
 missingItemsArrow.addEventListener('click', () => {
     hideBlock(missingItemsArrow, missingItemsList, 'flex')
+})
+
+payModalLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault()
+       model.getPayList()
+    })
 })
 view.init()
 
