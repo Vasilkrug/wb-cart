@@ -1053,11 +1053,26 @@ h2 {
     top: 50%;
     left: 50%;
     width: 400px;
-    height: 408px;
+    min-height: 408px;
     transform: translate(-50%, -50%);
     padding: 16px 22px 24px 22px;
     display: flex;
     flex-direction: column;
+}
+
+@media (max-width: 768px) {
+    .modal {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: translate(0);
+        border-radius: 0;
+    }
+}
+
+.delivery-list-wrapper {
+    margin-bottom: 30px;
 }
 
 .modal-title h2 {
@@ -1090,6 +1105,12 @@ h2 {
     width: 164px;
 }
 
+@media (max-width: 768px) {
+    .modal-button {
+        width: 100%;
+    }
+}
+
 .mobile-navigation-section {
     display: none;
 }
@@ -1098,6 +1119,10 @@ h2 {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.delivery-item .delete-icon {
+    margin-left: 10px;
 }
 
 .radio-input {
@@ -1115,6 +1140,7 @@ h2 {
     border: 1px solid #C5C5C8;
     border-radius: 16px;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .radio-checkbox:hover {
@@ -1132,6 +1158,76 @@ h2 {
     display: flex;
     align-items: center;
     gap: 5px;
+}
+
+@media (min-width: 768px) {
+    .delivery-modal {
+        width: 500px;
+    }
+}
+
+.delivery-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.delivery-buttons, .delivery-title {
+    font-family: "Segoe Bold", sans-serif;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.delivery-title {
+    margin-bottom: 10px;
+}
+
+.delivery-button {
+    height: 36px;
+    border: 2px solid rgb(203, 17, 171, 0.3);
+    border-radius: 20px;
+    width: 50%;
+}
+
+.delivery-button:hover {
+    border: 2px solid #CB11AB;
+}
+
+.button-active {
+    border: 2px solid #CB11AB;
+}
+
+.delivery-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.delivery-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.delivery-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+@media (max-width: 480px) {
+    .adress-item {
+        max-width: 230px;
+    }
+}
+
+.delivery-item label {
+    align-items: flex-start;
+}
+
+.gray {
+    color: #C5C5C8;
 }
 
 @media (max-width: 1023px) {
@@ -1175,4 +1271,3 @@ h2 {
         padding-bottom: 70px;
     }
 }
-

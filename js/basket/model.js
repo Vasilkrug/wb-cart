@@ -3,18 +3,19 @@ import {view} from "./view.js";
 
 export const model = {
     state: basketData,
-    totalPrice:0,
-    totalProduct:0,
-    noDiscountPrice:0,
-    isModalVisible:false,
+    totalPrice: 0,
+    totalProduct: 0,
+    noDiscountPrice: 0,
+    isModalVisible: false,
+    deliveryMethod:'pick-up',
     infoState: {
-        pay:{
-            list:payMethodsList,
-            activeItem:payMethodsList[0]
+        pay: {
+            list: payMethodsList,
+            activeItem: payMethodsList[0]
         },
-        delivery:{
-            list:deliveryList,
-            activeItem:deliveryList[0]
+        delivery: {
+            list: deliveryList,
+            activeItem: deliveryList[0]
         }
     },
 
@@ -44,59 +45,65 @@ export const model = {
     checkedItemToggle(index) {
         this.state[index].checked = !this.state[index].checked;
     },
-    setTotalPrice(){
-        this.totalPrice = this.state.reduce((acc,item) => {
+    setTotalPrice() {
+        this.totalPrice = this.state.reduce((acc, item) => {
             const totalPrice = Math.floor(item.count * item.price);
             const discountPrice = Math.floor(totalPrice - (item.price * item.sale / 100 * item.count));
-            if (item.checked){
+            if (item.checked) {
                 acc += discountPrice
             }
             return acc
-        },0)
+        }, 0)
         view.renderPrice()
         view.renderPayBtn()
         view.renderHideInfo()
     },
-    setTotalProduct(){
-        this.totalProduct = this.state.reduce((acc,item) => {
-            if (item.checked){
+    setTotalProduct() {
+        this.totalProduct = this.state.reduce((acc, item) => {
+            if (item.checked) {
                 acc += item.count
             }
             return acc
-        },0);
+        }, 0);
         view.renderPrice()
         view.renderHideInfo()
     },
-    setNoDiscountPrice(){
-        this.noDiscountPrice = this.state.reduce((acc,item) => {
-            if (item.checked){
+    setNoDiscountPrice() {
+        this.noDiscountPrice = this.state.reduce((acc, item) => {
+            if (item.checked) {
                 acc += Math.floor(item.price * item.count)
             }
             return acc
-        },0)
+        }, 0)
         view.renderPrice()
     },
-    openModal(action){
+    openModal(action) {
         this.isModalVisible = true
         view.renderModal(action)
     },
-    closeModal(action){
+    closeModal(action) {
         this.isModalVisible = false
         view.renderModal(action)
     },
-    changeActiveItem(id,action){
+    changeActiveItem(id, action) {
         this.infoState[action].list = this.infoState[action].list.map(item => {
             item.checked = id === item.id
             return item
         })
-
         view.renderModal(action)
     },
-    FindActiveItem(id,action){
+    FindActiveItem(id, action) {
         this.infoState[action].activeItem = this.infoState[action].list.find(item => item.id === id);
     },
-
-    getActiveItem(action){
-        view.renderActiveItem(this.infoState[action].activeItem)
-    }
+    getActiveItem(action) {
+        if (action === 'delivery') {
+            view.renderActiveDeliveryItem(this.infoState[action].activeItem)
+        } else {
+            view.renderActivePayItem(this.infoState[action].activeItem)
+        }
+    },
+    changeMethod(action,method) {
+        this.deliveryMethod = method
+        view.renderModal(action)
+    },
 }

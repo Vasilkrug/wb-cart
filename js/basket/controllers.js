@@ -74,29 +74,6 @@ missingItemsArrow.addEventListener('click', () => {
     hideBlock(missingItemsArrow, missingItemsList, 'flex')
 })
 
-export const setupModalListeners = () => {
-    const closeBtn = document.querySelector('.modal-close');
-    const modalInputs = document.querySelectorAll('[data-radio-index]');
-    const submitModalButton = document.querySelector('.modal-button');
-    const modal = document.querySelector('.modal')
-    const action = modal.dataset.active
-
-    closeBtn.addEventListener('click',() => {
-        model.closeModal(action)
-    })
-    modalInputs.forEach(input => {
-        input.addEventListener('change',() => {
-            const id = input.dataset.radioIndex
-            model.changeActiveItem(+id,action)
-            model.FindActiveItem(+id,action)
-        })
-    })
-
-    submitModalButton.addEventListener('click',() => {
-        model.getActiveItem(action)
-        model.closeModal(action)
-    })
-}
 const modalLinks = document.querySelectorAll('.modal-link')
 
 modalLinks.forEach(link => {
@@ -106,5 +83,40 @@ modalLinks.forEach(link => {
         model.openModal(action)
     })
 })
-view.init()
 
+export const setupModalListeners = () => {
+    const closeBtn = document.querySelector('.modal-close');
+    const modalInputs = document.querySelectorAll('[data-radio-index]');
+    const submitModalButton = document.querySelector('.modal-button');
+    const modal = document.querySelector('.modal');
+    const action = modal.dataset.active;
+    const deliveryButtons = document.querySelectorAll('.delivery-button')
+
+
+    closeBtn.addEventListener('click', () => {
+        model.closeModal(action)
+    })
+    modalInputs.forEach(input => {
+        input.addEventListener('change', () => {
+            const id = input.dataset.radioIndex
+            model.changeActiveItem(+id, action)
+            model.FindActiveItem(+id, action)
+        })
+    })
+
+    submitModalButton.addEventListener('click', () => {
+        model.getActiveItem(action)
+        model.closeModal(action)
+    })
+    deliveryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            document.querySelector('.button-active').classList.remove('button-active');
+            button.classList.add('button-active')
+            const method = button.dataset.method;
+            model.changeMethod(action, method)
+        })
+
+    })
+}
+
+view.init()

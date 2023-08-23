@@ -178,18 +178,71 @@ export const view = {
     </div>`
     },
     renderDelivery() {
+        let delivery = ''
+        let pickUprateHtml = ''
+        model.infoState.delivery.list.forEach(item => {
+            if (item.delivery === model.deliveryMethod) {
+                if (item.delivery === 'pick-up'){
+                    pickUprateHtml = `<div class="point-of-issue-info">
+                                    <img src="assets/icons/star.svg" alt="star">
+                                     <span class="rate">${item.rate}</span>
+                                     <span class="gray">Пункт выдачи</span>
+                                   </div>`
+                }
+                delivery += `
+                <div class="delivery-item-wrapper">
+                <div class="delivery-item">
+                <label class="radio-label" for=radio-${item.id}>
+                <input class="radio-input" type=radio id=radio-${item.id} data-radio-index=${item.id} ${item.checked ? "checked" : ''}>
+                <span class="radio-checkbox"></span>
+                <div class="adress-item">
+                <span>${item.address}</span>
+                ${pickUprateHtml}
+                </div>
+                </label>
+                <svg class="delete-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> 
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 5C2.5 4.72386 2.72386 4.5 3 4.5H17C17.2761 4.5 17.5 4.72386 17.5 5C17.5 5.27614 17.2761 5.5 17 5.5H3C2.72386 5.5 2.5 5.27614 2.5 5Z" fill="black"/> 
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M3.4584 4.5H16.5059L15.6411 15.6926C15.5405 16.9947 14.4546 18 13.1486 18H6.84639C5.54299 18 4.45829 16.9986 4.35435 15.6994L3.4584 4.5ZM4.5416 5.5L5.35117 15.6196C5.41353 16.3992 6.06435 17 6.84639 17H13.1486C13.9322 17 14.5837 16.3968 14.6441 15.6155L15.4256 5.5H4.5416Z" fill="black"/> 
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M13 5.5H7V3.46875C7 2.65758 7.65758 2 8.46875 2H11.5312C12.3424 2 13 2.65758 13 3.46875V5.5ZM8.46875 3C8.20987 3 8 3.20987 8 3.46875V4.5H12V3.46875C12 3.20987 11.7901 3 11.5312 3H8.46875Z" fill="black"/> 
+                </svg>
+                </div>
+                </div>
+                `
+            }
+        })
         return `<div class="delivery-list-wrapper">
         <div class="delivery-buttons">
-        <button class="delivery-button">В пункт выдачи</button>
-        <button class="delivery-button">Курьером</button>
-        
+        <button class="delivery-button button-active" data-method="pick-up">В пункт выдачи</button>
+        <button class="delivery-button" data-method="courier">Курьером</button>
+        </div>
+        <h3 class="delivery-title">Мои адреса</h3>
+        <div class="delivery-list">
+        ${delivery}
         </div>
        </div>`
+    },
+    renderActiveDeliveryItem(item){
+    const addressText = document.querySelector('.address-text');
+    const rate = document.querySelector('.rate');
+    const pointOfIssueAddress = document.querySelector('.point-of-issue-address');
+    const basketInfoDelivery = document.querySelector('.basket-info-delivery')
+    const deliveryMethod = document.querySelector('.delivery-method')
+        addressText.innerHTML = item.address
+        pointOfIssueAddress.innerHTML = item.address
+        if (item.delivery === 'pick-up'){
+            rate.innerHTML = item.rate
+            basketInfoDelivery.innerHTML = `Доставка в пункт выдачи`
+            deliveryMethod.innerHTML = `Пункт выдачи`
+        }else {
+            rate.innerHTML = 'Доставка курьером'
+            basketInfoDelivery.innerHTML = `Доставка курьером`
+            deliveryMethod.innerHTML = `Курьером`
+        }
     },
     renderModal(action) {
         const container = document.querySelector('.modal-wrapper')
 
-        const modal = `<div class="modal" data-active=${action}>
+        const modal = `<div class="modal ${action}-modal" data-active=${action}>
             <div class="modal-title">
                 <h2>${action === 'pay-modal' ? 'Способ оплаты' : 'Способ доставки'}</h2>
                 <svg class="modal-close" width="15" height="15" fill="#AAAAAE" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -211,7 +264,7 @@ export const view = {
             container.innerHTML = ''
         }
     },
-    renderActiveItem(item) {
+    renderActivePayItem(item) {
         const payBlocks = document.querySelectorAll('.pay')
         const html = `<img src=${item.img} src='pay-card' alt="card"/>
         <span class="card-number">${item.cardNumber}</span>
@@ -227,5 +280,4 @@ export const view = {
         this.renderHideInfo()
         this.renderMissingItems()
     },
-
 }
