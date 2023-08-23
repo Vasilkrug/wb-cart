@@ -42,7 +42,6 @@ const basketItemsWrapper = document.querySelector('.basket-items-wrapper')
 const selectAllCheckbox = document.getElementById('select-all');
 const payInput = document.getElementById('select-pay');
 const confirmPayBtn = document.querySelector('.confirm-pay');
-const payModalLinks = document.querySelectorAll('.pay-method-modal-link')
 
 selectAllCheckbox.addEventListener('change', () => {
     model.checkedAllItemsToggle(selectAllCheckbox)
@@ -75,10 +74,36 @@ missingItemsArrow.addEventListener('click', () => {
     hideBlock(missingItemsArrow, missingItemsList, 'flex')
 })
 
-payModalLinks.forEach(link => {
+export const setupModalListeners = () => {
+    const closeBtn = document.querySelector('.modal-close');
+    const modalInputs = document.querySelectorAll('[data-radio-index]');
+    const submitModalButton = document.querySelector('.modal-button');
+    const modal = document.querySelector('.modal')
+    const action = modal.dataset.active
+
+    closeBtn.addEventListener('click',() => {
+        model.closeModal(action)
+    })
+    modalInputs.forEach(input => {
+        input.addEventListener('change',() => {
+            const id = input.dataset.radioIndex
+            model.changeActiveItem(+id,action)
+            model.FindActiveItem(+id,action)
+        })
+    })
+
+    submitModalButton.addEventListener('click',() => {
+        model.getActiveItem(action)
+        model.closeModal(action)
+    })
+}
+const modalLinks = document.querySelectorAll('.modal-link')
+
+modalLinks.forEach(link => {
+    const action = link.dataset.action
     link.addEventListener('click', (e) => {
         e.preventDefault()
-       model.getPayList()
+        model.openModal(action)
     })
 })
 view.init()

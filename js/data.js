@@ -43,9 +43,18 @@ export const basketData = [
     },
 ];
 
-export const payMethodslist = [
-    {id:1,img:'assets/icons/mir-pay.png',cardNumber:'1234 56•• •••• 1234'},
-    {id:2,img:'assets/icons/visa.svg',cardNumber:'1234 56•• •••• 1234'},
-    {id:3,img:'assets/icons/master-card.svg',cardNumber:'1234 56•• •••• 1234'},
-    {id:4,img:'assets/icons/maestro.svg',cardNumber:'1234 56•• •••• 1234'},
-]
+export const payMethodsList = [
+    {id:0,img:'assets/icons/mir-pay.png',cardNumber:'1234 56•• •••• 1234',checked:true},
+    {id:1,img:'assets/icons/visa.svg',cardNumber:'1234 56•• •••• 1234',checked:false},
+    {id:2,img:'assets/icons/master-card.svg',cardNumber:'1234 56•• •••• 1234',checked:false},
+    {id:3,img:'assets/icons/maestro.svg',cardNumber:'1234 56•• •••• 1234',checked:false},
+];
+
+export const deliveryList = [
+    {id:1,address:'Бишкек, улица Табышалиева, 57',checked:true,delivery:'courier'},
+    {id:2,address:'Бишкек, улица Жукеева-Пудовкина, 77/1',checked:false,delivery:'courier'},
+    {id:3,address:'Бишкек, микрорайон Джал, улица Ахунбаева Исы, 67/1',checked:false,delivery:'courier'},
+    {id:4,address:'г. Бишкек, микрорайон Джал, улица Ахунбаева Исы, д. 67/1',checked:true,rate:'4.97',delivery:'pick-up'},
+    {id:5,address:'г. Бишкек, микрорайон Джал, улица Ахунбаева Исы, д. 67/1',checked:true,rate:'4.92',delivery:'pick-up'},
+    {id:6,address:'г. Бишкек, улица Табышалиева, д. 57',checked:true,rate:'4.99',delivery:'pick-up'}
+];

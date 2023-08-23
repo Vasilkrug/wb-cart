@@ -1,12 +1,22 @@
-import {basketData, payMethodslist} from "../data.js";
+import {basketData, deliveryList, payMethodsList} from "../data.js";
 import {view} from "./view.js";
 
 export const model = {
     state: basketData,
-    payList:payMethodslist,
     totalPrice:0,
     totalProduct:0,
     noDiscountPrice:0,
+    isModalVisible:false,
+    infoState: {
+        pay:{
+            list:payMethodsList,
+            activeItem:payMethodsList[0]
+        },
+        delivery:{
+            list:deliveryList,
+            activeItem:deliveryList[0]
+        }
+    },
 
     increment(index) {
         const count = this.state[index].count;
@@ -66,7 +76,27 @@ export const model = {
         },0)
         view.renderPrice()
     },
-    getPayList(){
-      view.renderAddressModal(this.payList)
+    openModal(action){
+        this.isModalVisible = true
+        view.renderModal(action)
     },
+    closeModal(action){
+        this.isModalVisible = false
+        view.renderModal(action)
+    },
+    changeActiveItem(id,action){
+        this.infoState[action].list = this.infoState[action].list.map(item => {
+            item.checked = id === item.id
+            return item
+        })
+
+        view.renderModal(action)
+    },
+    FindActiveItem(id,action){
+        this.infoState[action].activeItem = this.infoState[action].list.find(item => item.id === id);
+    },
+
+    getActiveItem(action){
+        view.renderActiveItem(this.infoState[action].activeItem)
+    }
 }

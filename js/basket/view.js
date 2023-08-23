@@ -1,5 +1,5 @@
 import {model} from "./model.js";
-import {setupControllers} from "./controllers.js";
+import {setupControllers, setupModalListeners} from "./controllers.js";
 
 export const view = {
     render() {
@@ -124,7 +124,7 @@ export const view = {
             selectAllLabel.style.display = 'flex'
         }
     },
-    renderMissingItems(){
+    renderMissingItems() {
         const missingItemsList = document.querySelector('.missing-items-list')
         const html = model.state.map((item) => {
             return `<li class="basket-item missing-item">
@@ -134,8 +134,8 @@ export const view = {
                                     <p>${item.name}</p>
                                     <div class=${item.characters.length ? "basket-item-characters" : "basket-item-characters-hide"}>
                                     ${item.characters.map(character => {
-                                    return `<span>${character}</span>`
-                                     }).join('')}
+                return `<span>${character}</span>`
+            }).join('')}
                                     </div>
                                 </div>
                             </div>
@@ -163,36 +163,62 @@ export const view = {
         }).join('');
         missingItemsList.innerHTML = html
     },
-    renderAddressModal(payList){
-        const container = document.querySelector('.main')
-        const addressHtml = `<div class="pay-list">
-                        ${payList.map(item => {
-                            return `<label class="radio-label" for=radio-${item.id}>
-                            <input class="radio-input" type=radio-${item.id} id=radio-${item.id} data-radio-index=${item.id}>
-                            <span class="radio-checkbox"></span>
-                            <div class="pay-card">
-                                <img src=${item.img} alt="pay-card">
-                                <span>${item.cardNumber}</span>
-                            </div>
-                        </label>`
+    renderPayList() {
+        return `<div class="pay-list">
+        ${model.infoState.pay.list.map(item => {
+            return `<label class="radio-label" for=radio-${item.id}>
+            <input class="radio-input" type=radio id=radio-${item.id} data-radio-index=${item.id} ${item.checked ? "checked" : ''}>
+            <span class="radio-checkbox"></span>
+            <div class="pay-card">
+                <img src=${item.img} alt="pay-card">
+                <span>${item.cardNumber}</span>
+            </div>
+        </label>`
         }).join('')}
-                    </div>`
-      const modal = `<div class="modal" data-active="pay-modal">
+    </div>`
+    },
+    renderDelivery() {
+        return `<div class="delivery-list-wrapper">
+        <div class="delivery-buttons">
+        <button class="delivery-button">В пункт выдачи</button>
+        <button class="delivery-button">Курьером</button>
+        
+        </div>
+       </div>`
+    },
+    renderModal(action) {
+        const container = document.querySelector('.modal-wrapper')
+
+        const modal = `<div class="modal" data-active=${action}>
             <div class="modal-title">
-                <h2>Способ оплаты</h2>
+                <h2>${action === 'pay-modal' ? 'Способ оплаты' : 'Способ доставки'}</h2>
                 <svg class="modal-close" width="15" height="15" fill="#AAAAAE" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/>
                 </svg>
             </div>
             <div class="modal-content">
-                    ${addressHtml}
+                    ${action === 'pay' ? this.renderPayList() : this.renderDelivery()}
             </div>
             <div class="modal-footer">
                 <button class="button modal-button">Выбрать</button>
             </div>
         </div>
         <div class="overlay"></div>`
-        container.insertAdjacentHTML('afterend',modal)
+        if (model.isModalVisible) {
+            container.innerHTML = modal
+            setupModalListeners()
+        } else {
+            container.innerHTML = ''
+        }
+    },
+    renderActiveItem(item) {
+        const payBlocks = document.querySelectorAll('.pay')
+        const html = `<img src=${item.img} src='pay-card' alt="card"/>
+        <span class="card-number">${item.cardNumber}</span>
+        `
+        payBlocks.forEach(block => {
+            block.innerHTML = html;
+        })
     },
     init() {
         this.render()
