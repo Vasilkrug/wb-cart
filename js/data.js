@@ -51,10 +51,10 @@ export const payMethodsList = [
 ];
 
 export const deliveryList = [
-    {id:1,address:'Бишкек, улица Табышалиева, 57',checked:false,delivery:'courier'},
+    {id:1,address:'Бишкек, улица Табышалиева, 57',checked:true,delivery:'courier'},
     {id:2,address:'Бишкек, улица Жукеева-Пудовкина, 77/1',checked:false,delivery:'courier'},
     {id:3,address:'Бишкек, микрорайон Джал, улица Ахунбаева Исы, 67/1',checked:false,delivery:'courier'},
-    {id:4,address:'г. Бишкек, микрорайон Джал, улица Ахунбаева Исы, д. 67/1',checked:false,rate:'4.97',delivery:'pick-up'},
+    {id:4,address:'г. Бишкек, микрорайон Джал, улица Ахунбаева Исы, д. 67/1',checked:true,rate:'4.97',delivery:'pick-up'},
     {id:5,address:'г. Бишкек, микрорайон Джал, улица Ахунбаева Исы, д. 67/1',checked:false,rate:'4.92',delivery:'pick-up'},
     {id:6,address:'г. Бишкек, улица Табышалиева, д. 57',checked:false,rate:'4.99',delivery:'pick-up'}
 ];

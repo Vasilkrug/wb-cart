@@ -110,8 +110,6 @@ export const setupModalListeners = () => {
     })
     deliveryButtons.forEach(button => {
         button.addEventListener('click', () => {
-            document.querySelector('.button-active').classList.remove('button-active');
-            button.classList.add('button-active')
             const method = button.dataset.method;
             model.changeMethod(action, method)
         })

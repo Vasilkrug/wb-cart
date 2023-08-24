@@ -212,8 +212,8 @@ export const view = {
         })
         return `<div class="delivery-list-wrapper">
         <div class="delivery-buttons">
-        <button class="delivery-button button-active" data-method="pick-up">В пункт выдачи</button>
-        <button class="delivery-button" data-method="courier">Курьером</button>
+        <button class="delivery-button ${'pick-up' === model.deliveryMethod ? 'button-active' : ''}" data-method="pick-up">В пункт выдачи</button>
+        <button class="delivery-button ${'courier' === model.deliveryMethod ? 'button-active' : ''}" data-method="courier">Курьером</button>
         </div>
         <h3 class="delivery-title">Мои адреса</h3>
         <div class="delivery-list">
@@ -241,7 +241,6 @@ export const view = {
     },
     renderModal(action) {
         const container = document.querySelector('.modal-wrapper')
-
         const modal = `<div class="modal ${action}-modal" data-active=${action}>
             <div class="modal-title">
                 <h2>${action === 'pay-modal' ? 'Способ оплаты' : 'Способ доставки'}</h2>
