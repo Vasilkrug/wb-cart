@@ -142,7 +142,7 @@
                             <div class="green-delivery basket-form-delivery">
                                 <img src="assets/icons/shipping.png" alt="shipping">
                                 <div class="delivery-info">Обратная доставка товаров на склад при отказе — <span
-                                        class="green">бесплатно</span>
+                                        class="green tooltip">бесплатно</span>
                                 </div>
                             </div>
                         </div>
@@ -160,6 +160,54 @@
                             <span class="validity-period">01/30</span>
                         </div>
                         <span class="pay-info">Спишем оплату с карты при получении</span>
+                    </div>
+                    <div class="info-wrapper form-wrapper">
+                        <div class="basket-form-title">
+                            <h2>Получатель</h2>
+                        </div>
+                        <form class="form">
+                            <div class="form-row">
+                                <div class="label-container">
+                                    <label class="input-label" for="name">
+                                        <input class="text-input" type="text" id="name" name="name"/>
+                                        <span class="input-title">Имя</span>
+                                    </label>
+                                    <!--                                <span class="error name-error">Введите имя</span>-->
+                                </div>
+                                <div class="label-container">
+                                    <label class="input-label" for="lastName">
+                                        <input class="text-input" id="lastName" name="lastName"/>
+                                        <span class="input-title">Фамилия</span>
+                                    </label>
+                                    <span class="error lastName-error"></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="label-container">
+                                    <label class="input-label" for="email">
+
+                                        <input class="text-input" id="email" name="email"/>
+                                        <span class="input-title">Почта</span>
+                                    </label>
+                                    <span class="error email-error"></span>
+                                </div>
+                                <div class="label-container">
+                                    <label class="input-label" for="phone">
+                                        <input class="text-input" id="phone" name="phone"/>
+                                        <span class="input-title">Телефон</span>
+                                    </label>
+                                    <span class="error phone-error"></span>
+                                </div>
+                                <div class="label-container">
+                                    <label class="input-label" for="inn">
+                                        <input class="text-input" id="inn" name="inn"/>
+                                        <span class="input-title">ИНН</span>
+                                    </label>
+                                    <span class="inn">Для таможенного оформления</span>
+                                    <!--                                <span class="error inn-error">Введите имя</span>-->
+                                </div>
+                            </div>
+                        </form>
                     </div>
 
 
@@ -207,9 +255,9 @@
                         <div class="basket-info-container">
                             <div class="basket-info-title">
                                 <span>Оплата картой</span>
-                                <a class="modal-link" href="#" data-action="pay"><img class="change change-pay"
-                                                                                      src="assets/icons/pencil.png"
-                                                                                      alt="pencil"></a>
+                                <a class="modal-link" href="#" data-action="pay">
+                                    <img class="change change-pay" src="assets/icons/pencil.png" alt="pencil">
+                                </a>
                             </div>
                             <div class="basket-pay">
                                 <div class="pay">
