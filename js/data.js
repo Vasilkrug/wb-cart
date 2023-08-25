@@ -29,7 +29,7 @@ export const basketData = [
     },
     {
         id: 3,
-        name: 'Карандаши цветные Faber-Castell "Замок", набор 24 цвета, заточенные, шестигранные,<br>Faber-Castell',
+        name: 'Карандаши цветные Faber-Castell "Замок", набор 24 цвета, заточенные, шестигранные, <br>Faber-Castell',
         img: 'assets/images/pencils.png',
         missingImg:'assets/images/missing-pencils.png',
         characters: [],
