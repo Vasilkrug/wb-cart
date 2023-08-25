@@ -7,7 +7,7 @@ export const model = {
     totalProduct: 0,
     noDiscountPrice: 0,
     isModalVisible: false,
-    deliveryMethod:'pick-up',
+    deliveryMethod: 'pick-up',
     infoState: {
         pay: {
             list: payMethodsList,
@@ -16,6 +16,29 @@ export const model = {
         delivery: {
             list: deliveryList,
             activeItem: deliveryList[0]
+        }
+    },
+    isValidationOn: false,
+    inputFields: {
+        name: {
+            error: '',
+            inputValue:'',
+        },
+        lastName: {
+            error: '',
+            inputValue:'',
+        },
+        email: {
+            error: '',
+            inputValue:'',
+        },
+        inn: {
+            error: '',
+            inputValue:'',
+        },
+        phone: {
+            error: '',
+            inputValue:'',
         }
     },
 
@@ -102,8 +125,48 @@ export const model = {
             view.renderActivePayItem(this.infoState[action].activeItem)
         }
     },
-    changeMethod(action,method) {
+    changeMethod(action, method) {
         this.deliveryMethod = method
         view.renderModal(action)
+    },
+    enableValidation() {
+        this.isValidationOn = true;
+        this.validation()
+        view.renderInputsErros()
+    },
+    setInputValue(field, value) {
+        this.inputFields[field].inputValue = value
+        if (this.isValidationOn){
+            this.validation()
+        }
+    },
+    validation(){
+        const NameAndLastNamePattern = /^[a-zA-Zа-яА-ЯёЁ'][a-zA-Z-а-яА-ЯёЁ' ]+[a-zA-Zа-яА-ЯёЁ']?$/;
+        const EmailPattern = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+        const phonePattern = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
+        const innPattern = /^\d+$/;
+        if (model.isValidationOn) {
+            Object.entries(this.inputFields).forEach(([field,value]) => {
+                switch (field) {
+                    case 'name':
+                        this.inputFields[field].error = NameAndLastNamePattern.test(value.inputValue) ? '' : 'Укажите имя';
+                        return;
+                    case 'lastName':
+                        this.inputFields[field].error = NameAndLastNamePattern.test(value.inputValue) ? '' : 'Укажите фамилию';
+                        return;
+                    case 'email':
+                        this.inputFields[field].error = EmailPattern.test(value.inputValue) ? '' : 'Укажите почту';
+                        return;
+                    case 'phone':
+                        this.inputFields[field].error = phonePattern.test(value.inputValue) ? '' : 'Укажите номер телефона';
+                        return;
+                    case 'inn':
+                        this.inputFields[field].error = innPattern.test(value.inputValue) && value.inputValue.length === 14 ? '' : 'Укажите ИНН';
+                        return;
+                }
+
+            })
+        }
+        view.renderInputsErros()
     },
 }

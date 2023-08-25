@@ -1233,11 +1233,12 @@ h2 {
 
 .form {
     max-width: 700px;
-    margin-top: 11px;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-top: 10px;
 }
+
 
 .form-row {
     display: flex;
@@ -1268,14 +1269,10 @@ h2 {
 
 .text-input {
     height: 27px;
-    border: none;
 }
 
-.text-input {
-    outline: none;
-}
-
-.text-input:focus ~ .input-title {
+.text-input:focus ~ .input-title,
+.text-input:not(:placeholder-shown) ~ .input-title {
     transform: translateY(0);
     font-size: 13px;
 }

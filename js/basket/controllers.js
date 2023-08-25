@@ -113,8 +113,20 @@ export const setupModalListeners = () => {
             const method = button.dataset.method;
             model.changeMethod(action, method)
         })
-
     })
 }
+const formInputs = document.querySelectorAll('.text-input');
+
+confirmPayBtn.addEventListener('click', () => {
+    model.enableValidation()
+})
+
+formInputs.forEach(input => {
+    const name = input.name
+    input.addEventListener('input', () => {
+        const value = input.value
+             model.setInputValue(name,value)
+    })
+})
 
 view.init()

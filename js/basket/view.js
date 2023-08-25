@@ -272,6 +272,15 @@ export const view = {
             block.innerHTML = html;
         })
     },
+    renderInputsErros(){
+        const inn = document.querySelector('.inn');
+            inn.innerHTML = model.inputFields.inn.error ? '' : 'Для таможенного оформления'
+            Object.entries(model.inputFields).forEach(([field,value]) => {
+                const error = document.querySelector(`.${field}-error`);
+                error.innerHTML = value.error
+
+        })
+    },
     init() {
         this.render()
         this.renderPrice()
