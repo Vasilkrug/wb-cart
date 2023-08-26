@@ -190,6 +190,7 @@ h2 {
     .p-16 {
         padding: 0 16px;
     }
+
     .checkbox-item {
         position: absolute;
         top: 16px;
@@ -210,9 +211,11 @@ h2 {
     .basket-items-wrapper {
         margin-bottom: 48px;
     }
+
     .basket-items-selection {
         padding-bottom: 20px;
     }
+
     .basket-wrapper-right {
         padding-top: 9px;
     }

@@ -1,5 +1,5 @@
-import {model} from "./model.js";
-import {setupControllers, setupModalListeners} from "./controllers.js";
+import {model} from './model.js';
+import {setupControllers, setupModalListeners} from './controllers.js';
 
 export const view = {
     render() {
@@ -82,7 +82,7 @@ export const view = {
                         </li>`
         }).join('');
         basketItemsList.innerHTML = html;
-        setupControllers()
+        setupControllers();
     },
     renderPrice() {
         const totalPrice = document.querySelector('.total-price');
@@ -91,41 +91,39 @@ export const view = {
         const discount = document.querySelector('.discount');
         const cartCounter = document.querySelector('.cart-counter');
 
-
         totalPrice.innerHTML = `${model.totalPrice.toLocaleString("ru-RU")} сом`;
         totalProduct.innerHTML = `${model.totalProduct} товаров`;
         noDiscountPrice.innerHTML = `${model.noDiscountPrice.toLocaleString("ru-RU")} сом`;
         discount.innerHTML = `${model.totalPrice - model.noDiscountPrice}`;
         cartCounter.innerHTML = `${model.totalProduct}`;
-
     },
     renderPayBtn() {
         const confirmPayBtn = document.querySelector('.confirm-pay');
         if (confirmPayBtn.classList.contains('active-btn')) {
-            confirmPayBtn.innerHTML = `Оплатить ${model.totalPrice} сом`
+            confirmPayBtn.innerHTML = `Оплатить ${model.totalPrice} сом`;
         } else {
-            confirmPayBtn.innerHTML = `Заказать`
+            confirmPayBtn.innerHTML = `Заказать`;
         }
     },
     renderHideInfo() {
         const arrow = document.querySelector('.toggle-arrow');
         const selectAllLabel = document.querySelector('.select-all-label');
-        const hideInfo = document.querySelector('.hide-info')
+        const hideInfo = document.querySelector('.hide-info');
         const basketItemsSelection = document.querySelector('.basket-items-selection');
 
         if (arrow.classList.contains('arrow-hidden')) {
-            selectAllLabel.style.display = 'none'
-            hideInfo.style.display = 'block'
+            selectAllLabel.style.display = 'none';
+            hideInfo.style.display = 'block';
             basketItemsSelection.style.marginBottom = '16px'
-            hideInfo.innerHTML = `${model.totalProduct} товаров · ${model.totalPrice.toLocaleString('ru-RU')} сом`
+            hideInfo.innerHTML = `${model.totalProduct} товаров · ${model.totalPrice.toLocaleString('ru-RU')} сом`;
         } else {
-            hideInfo.style.display = 'none'
-            basketItemsSelection.style.marginBottom = '0px'
-            selectAllLabel.style.display = 'flex'
+            hideInfo.style.display = 'none';
+            basketItemsSelection.style.marginBottom = '0px';
+            selectAllLabel.style.display = 'flex';
         }
     },
     renderMissingItems() {
-        const missingItemsList = document.querySelector('.missing-items-list')
+        const missingItemsList = document.querySelector('.missing-items-list');
         const html = model.state.map((item) => {
             return `<li class="basket-item missing-item">
                             <div class="basket-item-info-wrapper">
@@ -161,7 +159,7 @@ export const view = {
                             </div>
                         </li>`
         }).join('');
-        missingItemsList.innerHTML = html
+        missingItemsList.innerHTML = html;
     },
     renderPayList() {
         return `<div class="pay-list">
@@ -182,7 +180,7 @@ export const view = {
         let pickUprateHtml = ''
         model.infoState.delivery.list.forEach(item => {
             if (item.delivery === model.deliveryMethod) {
-                if (item.delivery === 'pick-up'){
+                if (item.delivery === 'pick-up') {
                     pickUprateHtml = `<div class="point-of-issue-info">
                                     <img src="assets/icons/star.svg" alt="star">
                                      <span class="rate">${item.rate}</span>
@@ -221,26 +219,28 @@ export const view = {
         </div>
        </div>`
     },
-    renderActiveDeliveryItem(item){
-    const addressText = document.querySelector('.address-text');
-    const rate = document.querySelector('.rate');
-    const pointOfIssueAddress = document.querySelector('.point-of-issue-address');
-    const basketInfoDelivery = document.querySelector('.basket-info-delivery')
-    const deliveryMethod = document.querySelector('.delivery-method')
+    renderActiveDeliveryItem(item) {
+        const addressText = document.querySelector('.address-text');
+        const rate = document.querySelector('.rate');
+        const pointOfIssueAddress = document.querySelector('.point-of-issue-address');
+        const basketInfoDelivery = document.querySelector('.basket-info-delivery');
+        const deliveryMethod = document.querySelector('.delivery-method');
+
         addressText.innerHTML = item.address
         pointOfIssueAddress.innerHTML = item.address
-        if (item.delivery === 'pick-up'){
-            rate.innerHTML = item.rate
-            basketInfoDelivery.innerHTML = `Доставка в пункт выдачи`
-            deliveryMethod.innerHTML = `Пункт выдачи`
-        }else {
-            rate.innerHTML = 'Доставка курьером'
-            basketInfoDelivery.innerHTML = `Доставка курьером`
-            deliveryMethod.innerHTML = `Курьером`
+
+        if (item.delivery === 'pick-up') {
+            rate.innerHTML = item.rate;
+            basketInfoDelivery.innerHTML = `Доставка в пункт выдачи`;
+            deliveryMethod.innerHTML = `Пункт выдачи`;
+        } else {
+            rate.innerHTML = 'Доставка курьером';
+            basketInfoDelivery.innerHTML = `Доставка курьером`;
+            deliveryMethod.innerHTML = `Курьером`;
         }
     },
     renderModal(action) {
-        const container = document.querySelector('.modal-wrapper')
+        const container = document.querySelector('.modal-wrapper');
         const modal = `<div class="modal ${action}-modal" data-active=${action}>
             <div class="modal-title">
                 <h2>${action === 'pay-modal' ? 'Способ оплаты' : 'Способ доставки'}</h2>
@@ -257,10 +257,10 @@ export const view = {
         </div>
         <div class="overlay"></div>`
         if (model.isModalVisible) {
-            container.innerHTML = modal
-            setupModalListeners()
+            container.innerHTML = modal;
+            setupModalListeners();
         } else {
-            container.innerHTML = ''
+            container.innerHTML = '';
         }
     },
     renderActivePayItem(item) {
@@ -272,20 +272,21 @@ export const view = {
             block.innerHTML = html;
         })
     },
-    renderInputsErros(){
+    renderInputsErros() {
         const inn = document.querySelector('.inn');
-            inn.innerHTML = model.inputFields.inn.error ? '' : 'Для таможенного оформления'
-            Object.entries(model.inputFields).forEach(([field,value]) => {
-                const error = document.querySelector(`.${field}-error`);
-                error.innerHTML = value.error
+
+        inn.innerHTML = model.inputFields.inn.error ? '' : 'Для таможенного оформления';
+        Object.entries(model.inputFields).forEach(([field, value]) => {
+            const error = document.querySelector(`.${field}-error`);
+            error.innerHTML = value.error;
 
         })
     },
     init() {
-        this.render()
-        this.renderPrice()
-        this.renderPayBtn()
-        this.renderHideInfo()
-        this.renderMissingItems()
+        this.render();
+        this.renderPrice();
+        this.renderPayBtn();
+        this.renderHideInfo();
+        this.renderMissingItems();
     },
 }

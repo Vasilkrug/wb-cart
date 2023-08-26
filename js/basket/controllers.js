@@ -1,6 +1,6 @@
-import {model} from "./model.js";
-import {view} from "./view.js";
-import {hideBlock} from "./utils.js";
+import {model} from './model.js';
+import {view} from './view.js';
+import {hideBlock} from './utils.js';
 
 export const setupControllers = () => {
     const selectItemsCheckbox = document.querySelectorAll('[data-index]');
@@ -9,80 +9,81 @@ export const setupControllers = () => {
 
     selectItemsCheckbox.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
-            model.checkedItemToggle(checkbox.dataset.index)
-            model.setTotalPrice()
-            model.setTotalProduct()
-            model.setNoDiscountPrice()
+            model.checkedItemToggle(checkbox.dataset.index);
+            model.setTotalPrice();
+            model.setTotalProduct();
+            model.setNoDiscountPrice();
         })
-    })
+    });
 
 
     plusBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            model.increment(btn.dataset.counterId)
-            model.setTotalPrice()
-            model.setTotalProduct()
-            model.setNoDiscountPrice()
+            model.increment(btn.dataset.counterId);
+            model.setTotalPrice();
+            model.setTotalProduct();
+            model.setNoDiscountPrice();
         })
-    })
+    });
 
     minusBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            model.decrement(btn.dataset.counterId)
-            model.setTotalPrice()
-            model.setTotalProduct()
-            model.setNoDiscountPrice()
-        })
-    })
-}
+            model.decrement(btn.dataset.counterId);
+            model.setTotalPrice();
+            model.setTotalProduct();
+            model.setNoDiscountPrice();
+        });
+    });
+};
 const arrow = document.querySelector('.toggle-arrow');
 const missingItemsArrow = document.querySelector('.missing-items-arrow');
 const missingItemsList = document.querySelector('.missing-items-list');
-const basketItemsWrapper = document.querySelector('.basket-items-wrapper')
+const basketItemsWrapper = document.querySelector('.basket-items-wrapper');
 const selectAllCheckbox = document.getElementById('select-all');
 const payInput = document.getElementById('select-pay');
 const confirmPayBtn = document.querySelector('.confirm-pay');
 
 selectAllCheckbox.addEventListener('change', () => {
-    model.checkedAllItemsToggle(selectAllCheckbox)
-    model.setTotalPrice()
-    model.setTotalProduct()
-    model.setNoDiscountPrice()
-})
+    model.checkedAllItemsToggle(selectAllCheckbox);
+    model.setTotalPrice();
+    model.setTotalProduct();
+    model.setNoDiscountPrice();
+});
 
 window.addEventListener('load', () => {
-    model.setTotalPrice()
-    model.setTotalProduct()
-    model.setNoDiscountPrice()
-})
+    model.setTotalPrice();
+    model.setTotalProduct();
+    model.setNoDiscountPrice();
+});
 
 payInput.addEventListener('change', () => {
     if (payInput.checked) {
-        confirmPayBtn.classList.add('active-btn')
+        confirmPayBtn.classList.add('active-btn');
     } else {
-        confirmPayBtn.classList.remove('active-btn')
+        confirmPayBtn.classList.remove('active-btn');
     }
-    model.setTotalPrice()
-})
+    model.setTotalPrice();
+});
 
 arrow.addEventListener('click', () => {
-    hideBlock(arrow, basketItemsWrapper, 'block')
-    model.setTotalPrice()
-    model.setTotalProduct()
-})
-missingItemsArrow.addEventListener('click', () => {
-    hideBlock(missingItemsArrow, missingItemsList, 'flex')
-})
+    hideBlock(arrow, basketItemsWrapper, 'block');
+    model.setTotalPrice();
+    model.setTotalProduct();
+});
 
-const modalLinks = document.querySelectorAll('.modal-link')
+missingItemsArrow.addEventListener('click', () => {
+    hideBlock(missingItemsArrow, missingItemsList, 'flex');
+});
+
+const modalLinks = document.querySelectorAll('.modal-link');
 
 modalLinks.forEach(link => {
-    const action = link.dataset.action
+    const action = link.dataset.action;
     link.addEventListener('click', (e) => {
-        e.preventDefault()
-        model.openModal(action)
-    })
-})
+        e.preventDefault();
+        model.openModal(action);
+    });
+});
 
 export const setupModalListeners = () => {
     const closeBtn = document.querySelector('.modal-close');
@@ -90,43 +91,45 @@ export const setupModalListeners = () => {
     const submitModalButton = document.querySelector('.modal-button');
     const modal = document.querySelector('.modal');
     const action = modal.dataset.active;
-    const deliveryButtons = document.querySelectorAll('.delivery-button')
+    const deliveryButtons = document.querySelectorAll('.delivery-button');
 
 
     closeBtn.addEventListener('click', () => {
-        model.closeModal(action)
-    })
+        model.closeModal(action);
+    });
+
     modalInputs.forEach(input => {
         input.addEventListener('change', () => {
-            const id = input.dataset.radioIndex
-            model.changeActiveItem(+id, action)
-            model.FindActiveItem(+id, action)
-        })
-    })
+            const id = input.dataset.radioIndex;
+            model.changeActiveItem(+id, action);
+            model.FindActiveItem(+id, action);
+        });
+    });
 
     submitModalButton.addEventListener('click', () => {
-        model.getActiveItem(action)
-        model.closeModal(action)
+        model.getActiveItem(action);
+        model.closeModal(action);
     })
     deliveryButtons.forEach(button => {
         button.addEventListener('click', () => {
             const method = button.dataset.method;
-            model.changeMethod(action, method)
-        })
-    })
-}
+            model.changeMethod(action, method);
+        });
+    });
+};
+
 const formInputs = document.querySelectorAll('.text-input');
 
 confirmPayBtn.addEventListener('click', () => {
-    model.enableValidation()
-})
+    model.enableValidation();
+});
 
 formInputs.forEach(input => {
-    const name = input.name
+    const name = input.name;
     input.addEventListener('input', () => {
-        const value = input.value
-             model.setInputValue(name,value)
-    })
-})
+        const value = input.value;
+        model.setInputValue(name, value);
+    });
+});
 
-view.init()
+view.init();

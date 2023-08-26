@@ -234,6 +234,7 @@
         border: none;
         padding: 16px 16px 24px 16px;
     }
+
     .total, .total-price {
         font-size: 20px;
         line-height: 28px;
@@ -242,16 +243,20 @@
     .basket-info-title, .company, .basket-pay, .address {
         display: none !important;
     }
+
     .total-sale-info {
         font-size: 16px;
     }
+
     .total-sale-delivery {
         margin-top: 7px;
         gap: 5px;
     }
+
     .checkbox-pay-block > .checkbox-label > .select-all {
         font-size: 13px;
     }
+
     .confirm-pay {
         font-size: 16px;
     }
@@ -267,6 +272,7 @@
     .rules br {
         display: none;
     }
+
     .rules-confirm {
         gap: 9px;
     }

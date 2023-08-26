@@ -1,5 +1,5 @@
-import {basketData, deliveryList, payMethodsList} from "../data.js";
-import {view} from "./view.js";
+import {basketData, deliveryList, payMethodsList} from '../data.js';
+import {view} from './view.js';
 
 export const model = {
     state: basketData,
@@ -22,23 +22,23 @@ export const model = {
     inputFields: {
         name: {
             error: '',
-            inputValue:'',
+            inputValue: '',
         },
         lastName: {
             error: '',
-            inputValue:'',
+            inputValue: '',
         },
         email: {
             error: '',
-            inputValue:'',
+            inputValue: '',
         },
         inn: {
             error: '',
-            inputValue:'',
+            inputValue: '',
         },
         phone: {
             error: '',
-            inputValue:'',
+            inputValue: '',
         }
     },
 
@@ -53,17 +53,17 @@ export const model = {
     decrement(index) {
         const count = this.state[index].count;
         if (count >= 2) {
-            this.state[index].count = this.state[index].count -= 1
-            view.render()
+            this.state[index].count = this.state[index].count -= 1;
+            view.render();
         }
 
     },
     checkedAllItemsToggle(target) {
         this.state = this.state.map(item => {
-            item.checked = target.checked
-            return item
-        })
-        view.render()
+            item.checked = target.checked;
+            return item;
+        });
+        view.render();
     },
     checkedItemToggle(index) {
         this.state[index].checked = !this.state[index].checked;
@@ -73,80 +73,80 @@ export const model = {
             const totalPrice = Math.floor(item.count * item.price);
             const discountPrice = Math.floor(totalPrice - (item.price * item.sale / 100 * item.count));
             if (item.checked) {
-                acc += discountPrice
+                acc += discountPrice;
             }
-            return acc
+            return acc;
         }, 0)
-        view.renderPrice()
-        view.renderPayBtn()
-        view.renderHideInfo()
+        view.renderPrice();
+        view.renderPayBtn();
+        view.renderHideInfo();
     },
     setTotalProduct() {
         this.totalProduct = this.state.reduce((acc, item) => {
             if (item.checked) {
-                acc += item.count
+                acc += item.count;
             }
-            return acc
+            return acc;
         }, 0);
-        view.renderPrice()
-        view.renderHideInfo()
+        view.renderPrice();
+        view.renderHideInfo();
     },
     setNoDiscountPrice() {
         this.noDiscountPrice = this.state.reduce((acc, item) => {
             if (item.checked) {
-                acc += Math.floor(item.price * item.count)
+                acc += Math.floor(item.price * item.count);
             }
-            return acc
+            return acc;
         }, 0)
-        view.renderPrice()
+        view.renderPrice();
     },
     openModal(action) {
-        this.isModalVisible = true
-        view.renderModal(action)
+        this.isModalVisible = true;
+        view.renderModal(action);
     },
     closeModal(action) {
-        this.isModalVisible = false
-        view.renderModal(action)
+        this.isModalVisible = false;
+        view.renderModal(action);
     },
     changeActiveItem(id, action) {
         this.infoState[action].list = this.infoState[action].list.map(item => {
-            item.checked = id === item.id
-            return item
+            item.checked = id === item.id;
+            return item;
         })
-        view.renderModal(action)
+        view.renderModal(action);
     },
     FindActiveItem(id, action) {
         this.infoState[action].activeItem = this.infoState[action].list.find(item => item.id === id);
     },
     getActiveItem(action) {
         if (action === 'delivery') {
-            view.renderActiveDeliveryItem(this.infoState[action].activeItem)
+            view.renderActiveDeliveryItem(this.infoState[action].activeItem);
         } else {
-            view.renderActivePayItem(this.infoState[action].activeItem)
+            view.renderActivePayItem(this.infoState[action].activeItem);
         }
     },
     changeMethod(action, method) {
-        this.deliveryMethod = method
-        view.renderModal(action)
+        this.deliveryMethod = method;
+        view.renderModal(action);
     },
     enableValidation() {
         this.isValidationOn = true;
-        this.validation()
-        view.renderInputsErros()
+        this.validation();
+        view.renderInputsErros();
     },
     setInputValue(field, value) {
-        this.inputFields[field].inputValue = value
-        if (this.isValidationOn){
-            this.validation()
+        this.inputFields[field].inputValue = value;
+        if (this.isValidationOn) {
+            this.validation();
         }
     },
-    validation(){
+    validation() {
         const NameAndLastNamePattern = /^[a-zA-Zа-яА-ЯёЁ'][a-zA-Z-а-яА-ЯёЁ' ]+[a-zA-Zа-яА-ЯёЁ']?$/;
         const EmailPattern = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
         const phonePattern = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
         const innPattern = /^\d+$/;
         if (model.isValidationOn) {
-            Object.entries(this.inputFields).forEach(([field,value]) => {
+            Object.entries(this.inputFields).forEach(([field, value]) => {
                 switch (field) {
                     case 'name':
                         this.inputFields[field].error = NameAndLastNamePattern.test(value.inputValue) ? '' : 'Укажите имя';
@@ -167,6 +167,6 @@ export const model = {
 
             })
         }
-        view.renderInputsErros()
+        view.renderInputsErros();
     },
 }
