@@ -28,6 +28,7 @@ section {
     background: #CB11AB;
     border-radius: 8px;
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .wrapper {

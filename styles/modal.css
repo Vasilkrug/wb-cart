@@ -134,6 +134,7 @@
     border: 2px solid rgb(203, 17, 171, 0.3);
     border-radius: 20px;
     width: 50%;
+    cursor: pointer;
 }
 
 .delivery-button:hover {
