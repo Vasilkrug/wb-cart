@@ -96,6 +96,11 @@ export const view = {
         noDiscountPrice.innerHTML = `${model.noDiscountPrice.toLocaleString("ru-RU")} сом`;
         discount.innerHTML = `${model.totalPrice - model.noDiscountPrice}`;
         cartCounter.innerHTML = `${model.totalProduct}`;
+        if (!model.totalProduct){
+            cartCounter.classList.add('hidden');
+        }else {
+            cartCounter.classList.remove('hidden');
+        }
     },
     renderPayBtn() {
         const confirmPayBtn = document.querySelector('.confirm-pay');
