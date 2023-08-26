@@ -1,0 +1,299 @@
+.basket-form-content {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.info-wrapper {
+    background-color: #FFF;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15), 0px 0px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    padding: 16px 24px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.basket-form-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Segoe Bold", sans-serif;
+}
+
+.basket-form-title h2 {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.2px;
+}
+
+.basket-form-title a {
+    color: #CB11AB;
+    font-size: 16px;
+}
+
+.basket-form-item {
+    display: grid;
+    grid-template-columns: 153px auto;
+    column-gap: 32px;
+}
+
+.basket-form-info-title {
+    font-weight: 600;
+    line-height: 24px;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+}
+
+.basket-form-info {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+
+}
+
+.point-of-issue-info {
+    display: flex;
+    gap: 5px;
+    font-size: 13px;
+    margin-top: 4px;
+    line-height: 16px;
+}
+
+.point-of-issue-address {
+    line-height: 24px;
+}
+
+.basket-form-images {
+    display: flex;
+    gap: 8px;
+}
+
+.basket-form-img {
+    position: relative;
+}
+
+.item-count {
+    position: absolute;
+    top: -10px;
+    right: -4px;
+    min-width: 16px;
+    height: 16px;
+    background-color: #F55123;
+    border-radius: 16px;
+    padding: 1px 4px;
+    font-size: 10px;
+    text-align: center;
+    color: #FFF;
+}
+
+.basket-form-images img {
+    width: 40px;
+    height: 56px;
+    border-radius: 8px;
+}
+
+.basket-form-delivery {
+    background-color: #FFF !important;
+    align-items: flex-start !important;
+    margin-top: 6px;
+}
+
+.basket-form-pay-method {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 24px;
+    align-items: center;
+}
+
+.basket-form-pay-method img {
+    margin-right: 8px;
+}
+
+.pay-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.pay-info {
+    font-size: 13px;
+    flex-basis: 100%;
+}
+
+.pay {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.no-gap {
+    gap: 0;
+}
+
+.card-number {
+    margin-right: 13px;
+}
+
+.validity-period {
+    line-height: 8px;
+}
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 30px;
+}
+
+.form {
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+.form-row {
+    display: flex;
+    gap: 25px;
+}
+
+.label-container {
+    flex-grow: 1;
+}
+
+.input-title {
+    position: relative;
+    transform: translateY(25px);
+    color: #A0A0A4;
+}
+
+.input-label {
+    display: flex;
+    flex-direction: column-reverse;
+    border-bottom: 1px solid #A0A0A4;
+}
+
+.text-input {
+    height: 27px;
+}
+
+.text-input:focus ~ .input-title,
+.text-input:not(:placeholder-shown) ~ .input-title {
+    transform: translateY(0);
+    font-size: 13px;
+}
+
+.error {
+    color: #F55123;
+    font-size: 12px;
+}
+
+.inn {
+    font-size: 12px;
+}
+
+@media (min-width: 1023px) {
+    .basket-form-delivery {
+        padding: 0 !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 19px;
+    }
+    .form {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .delivery-form, .pay-form {
+        gap: 0px;
+    }
+    .delivery-form {
+        padding-bottom: 11px !important;
+    }
+    .pay-form {
+        padding-bottom: 20px !important;
+    }
+
+    .basket-form-content {
+        margin-top: 34px;
+        gap: 12px;
+    }
+
+    .basket-form-info {
+        gap: 18px;
+    }
+
+    .basket-form-title h2 {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .basket-form-title {
+        margin-bottom: 8px;
+    }
+
+    .basket-form-info-title {
+        letter-spacing: 0.3px;
+    }
+
+    .basket-form-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        font-size: 16px;
+    }
+
+    .basket-form-item:nth-child(4) {
+        margin-top: 8px;
+    }
+
+    .basket-form-images {
+        margin-top: 11px;
+    }
+
+    .basket-form-delivery {
+        padding: 8px 8px 12px 8px;
+        margin-top: 0;
+    }
+
+    .info-wrapper {
+        background-color: #FFF;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15), 0px 0px 1px rgba(0, 0, 0, 0.3);
+        border-radius: 16px;
+        padding: 16px;
+    }
+
+    .point-of-issue-address {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .point-of-issue-info {
+        gap: 6px;
+    }
+
+    .card-number, .validity-period {
+        font-size: 16px;
+    }
+
+    .form-wrapper {
+        gap: 0;
+        margin-bottom: 6px;
+    }
+    .form-wrapper > .basket-form-title {
+        margin-bottom: 0;
+    }
+
+
+    .input-title {
+        font-size: 16px;
+        line-height: 24px;
+    }
+}

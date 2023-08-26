@@ -1,0 +1,273 @@
+.sale-info {
+    flex: 1;
+    width: 303px;
+    padding: 16px 24px 24px 24px;
+    background-color: #FFF;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15), 0px 0px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+}
+
+.total-sale-info-title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    font-family: "Segoe Bold", sans-serif;
+    font-style: normal;
+    line-height: 32px;
+    width: 100%;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+}
+
+.total-price {
+    font-size: 20px;
+}
+
+.total {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.total-sale-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.total-sale-info span {
+    display: block;
+}
+
+.total-sale-delivery {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 27px;
+}
+
+.basket-info-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.change {
+    cursor: pointer;
+}
+
+.basket-info-title span, img {
+    display: block;
+    font-family: "Segoe Bold", sans-serif;
+}
+
+.address, .basket-pay {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.basket-pay {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.address span {
+    color: #CB11AB;
+    display: block;
+    padding-top: 4px;
+}
+
+.green-delivery {
+    position: relative;
+    margin-top: 12px;
+    padding: 8px 8px 12px 8px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    background-color: #F6F6FA;
+    border-radius: 8px;
+}
+
+.tooltip {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip:hover + .tooltip-container {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip-container {
+    position: absolute;
+    background-color: #FFF;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15), 0px 0px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    visibility: hidden;
+    opacity: 0;
+    padding: 11px 16px 13px;
+    transition: opacity 0.2s ease;
+    z-index: 2;
+}
+
+.info-tooltip {
+    width: 280px;
+    left: 0;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.info-tooltip .tooltip-title {
+    font-family: "Segoe Bold", sans-serif;
+}
+
+.price-tooltip {
+    width: 239px;
+    right: -15px;
+    top: 130%;
+}
+
+.price-tooltip-text {
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-tooltip-text span:last-child {
+    color: black;
+}
+
+.green-tooltip {
+    width: 288px;
+    right: -20px;
+    top: 90%;
+}
+
+.green {
+    color: #0CB477;
+    border-bottom: dashed 1px #0CB477;
+}
+
+.checkbox-pay-block {
+    margin-top: 10px;
+    font-size: 14px;
+    padding: 8px 8px 12px 8px;
+    background-color: #F6F6FA;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.checkbox-pay-block .checkbox-label {
+    gap: 9px;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.checkbox-pay-text {
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.confirm-pay {
+    margin-top: 23px;
+    width: 100%;
+}
+
+.rules-confirm {
+    margin-top: 12px;
+    display: flex;
+    align-items: flex-start;
+    font-size: 13px;
+}
+
+.rules-confirm label {
+    width: 20px;
+}
+
+.rules {
+    border-bottom: 1px solid #C5C5C8;
+    cursor: pointer;
+}
+
+@media (min-width: 1400px) {
+    .sale-info {
+        width: 429px;
+    }
+
+    .green-tooltip {
+        width: 410px;
+    }
+}
+
+@media (min-width: 1399px) {
+    .green-delivery br {
+        display: none;
+    }
+
+    .rules-confirm {
+        gap: 5px;
+    }
+
+    .rules br {
+        display: none;
+    }
+}
+
+@media (max-width: 1023px) {
+    .sale-info {
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        background-color: #F6F6FA;
+        border: none;
+        padding: 16px 16px 24px 16px;
+    }
+    .total, .total-price {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .basket-info-title, .company, .basket-pay, .address {
+        display: none !important;
+    }
+    .total-sale-info {
+        font-size: 16px;
+    }
+    .total-sale-delivery {
+        margin-top: 7px;
+        gap: 5px;
+    }
+    .checkbox-pay-block > .checkbox-label > .select-all {
+        font-size: 13px;
+    }
+    .confirm-pay {
+        font-size: 16px;
+    }
+
+    .mobile-bg, .checkbox-pay-block {
+        background-color: #F0ECF4 !important;
+    }
+
+    .green-delivery br {
+        display: none;
+    }
+
+    .rules br {
+        display: none;
+    }
+    .rules-confirm {
+        gap: 9px;
+    }
+}

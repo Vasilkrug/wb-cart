@@ -28,7 +28,7 @@ export const view = {
             }).join('')}
                                     </div>
                                     <div class="basket-item-location">
-                                        <div class="address">${item.location}</div>
+                                        <div class="address-name">${item.location}</div>
                                         <div class="company">
                                             ${item.company}
                                             <span>
@@ -46,9 +46,9 @@ export const view = {
                             <div class="basket-item-controls-wrapper">
                                 <div class="basket-item-controls">
                                     <div class="counter">
-                                        <button class="counter-button" data-counter-id=${index} data-direction="minus">−</button>
+                                        <button class="counter-button ${item.count < 2 ? 'disabled' : ''}" data-counter-id=${index} data-direction="minus">−</button>
                                         <div class="counter-value">${item.count}</div>
-                                        <button class="counter-button" data-counter-id=${index} data-direction="plus">+</button>
+                                        <button class="counter-button ${item.count === item.remains ? 'disabled' : ''}" data-counter-id=${index} data-direction="plus">+</button>
                                     </div>
                                     <div class="max-products" data-hidden=${remains <= 2 ? 'false' : 'true'}>Осталось ${remains} шт.</div>
                                     <div class="controls">
@@ -131,7 +131,7 @@ export const view = {
                             <div class="basket-item-info-wrapper">
                                     <img class="basket-item-img" src=${item.missingImg} alt="t-shirt">
                                 <div class="basket-item-text missing-item-text">
-                                    <p>${item.name}</p>
+                                    <p class="item-name">${item.name}</p>
                                     <div class=${item.characters.length ? "basket-item-characters" : "basket-item-characters-hide"}>
                                     ${item.characters.map(character => {
                 return `<span>${character}</span>`

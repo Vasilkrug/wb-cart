@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8" name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/aside.css">
+    <link rel="stylesheet" href="./styles/product-lists.css">
+    <link rel="stylesheet" href="./styles/basket-forms.css">
+    <link rel="stylesheet" href="./styles/modal.css">
+    <link rel="stylesheet" href="./styles/footer.css">
     <link rel="stylesheet" href="./styles/style.css">
     <script type="module" src="js/index.js"></script>
     <script type="module" src="js/basket/basket.js"></script>
@@ -70,7 +76,7 @@
     <main class="main">
         <section class="basket-wrapper">
             <div class="basket-wrapper-left">
-                <h2 class="p-16">Корзина</h2>
+                <h2 class="basket-title p-16">Корзина</h2>
                 <div class="basket-items-selection p-16">
                     <div class="select-all-block">
                         <label class="checkbox-label select-all-label" for="select-all">
@@ -158,8 +164,8 @@
                                 <span class="card-number">1234 56•• •••• 1234</span>
                             </div>
                             <span class="validity-period">01/30</span>
+                            <div class="pay-info">Спишем оплату с карты при получении</div>
                         </div>
-                        <span class="pay-info">Спишем оплату с карты при получении</span>
                     </div>
                     <div class="info-wrapper form-wrapper">
                         <div class="basket-form-title">
@@ -176,7 +182,8 @@
                                 </div>
                                 <div class="label-container">
                                     <label class="input-label" for="lastName">
-                                        <input class="text-input" type="text" id="lastName" name="lastName" placeholder=""/>
+                                        <input class="text-input" type="text" id="lastName" name="lastName"
+                                               placeholder=""/>
                                         <span class="input-title lastName-title">Фамилия</span>
                                     </label>
                                     <span class="error lastName-error"></span>
@@ -213,7 +220,7 @@
                 </div>
             </div>
             <div class="basket-wrapper-right">
-                <div class="sale-info">
+                <aside class="sale-info">
                     <div class="total-sale-info-title">
                         <span class="total">Итого</span>
                         <span class="total-price">2 101 063 сом</span>
@@ -281,7 +288,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </aside>
             </div>
         </section>
         <div class="modal-wrapper"></div>
