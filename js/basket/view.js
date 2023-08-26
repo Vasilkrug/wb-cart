@@ -63,7 +63,9 @@ export const view = {
                                     </div>
                                 </div>
                                 <div class="basket-item-price">
-                                    <div class="item-price">${discountPrice.toLocaleString("ru-RU")} <span class="currency">сом</span></div>
+                                    <div class="item-price" style="font-size: ${discountPrice.toLocaleString("ru-RU").length > 7 ? '14px' : '20px'}">
+                                            ${discountPrice.toLocaleString("ru-RU")} 
+                                            <span class="currency">сом</span></div>
                                     <div class="item-discount">
                                                 <span class="item-discount tooltip">${totalPrice.toLocaleString("ru-RU")} сом</span>
                                                 <div class="tooltip-container price-tooltip">
