@@ -32,7 +32,7 @@ export const view = {
                                         <div class="company">
                                             ${item.company}
                                             <span>
-                                            <img class="tooltip" src="../../assets/icons/info.png" alt="info">
+                                            <img class="tooltip" src="assets/icons/info.png" alt="info">
                                             <div class="tooltip-container info-tooltip">
                                             <div class="tooltip-title">OOO «МЕГАПРОФСТИЛЬ»</div>
                                             <div class="tooltip-text">ОГРН: 5167746237148</div>
