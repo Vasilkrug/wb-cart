@@ -110,11 +110,6 @@ h2 {
     flex-shrink: 0;
 }
 
-.checkbox:hover {
-    background: url("../assets/icons/checkbox.png") center no-repeat;
-    opacity: 0.5;
-}
-
 .checkbox-input:checked + .checkbox {
     background: url("../assets/icons/checkbox.png") center no-repeat;
     opacity: 1;
@@ -138,6 +133,12 @@ h2 {
 @media (min-width: 1399px) {
     .basket-title {
         letter-spacing: -0.05em;
+    }
+}
+@media (min-width: 1024px) {
+    .checkbox:hover {
+        background: url("../assets/icons/checkbox.png") center no-repeat;
+        opacity: 0.5;
     }
 }
 
