@@ -64,7 +64,7 @@
     width: 100%;
     padding: 12px 50px 16px 20px;
     border-radius: 50px;
-    background: rgba(255, 255, 255, 0.2) url('../assets/icons/search.png') no-repeat right 20px center;
+    background: rgba(255, 255, 255, 0.2) url('../assets/icons/search.svg') no-repeat right 20px center;
     color: #FFF;
 }
 

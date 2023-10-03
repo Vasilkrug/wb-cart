@@ -11,6 +11,11 @@
     position: relative;
 }
 
+.basket-item-img {
+    width: 72px;
+    height: 96px;
+}
+
 .basket-item-info-wrapper {
     display: flex;
     gap: 17px;
