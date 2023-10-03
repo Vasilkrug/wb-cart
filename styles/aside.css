@@ -269,6 +269,10 @@
         display: none;
     }
 
+    .tooltip-container {
+        display: none;
+    }
+
     .rules br {
         display: none;
     }
