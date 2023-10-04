@@ -15,7 +15,7 @@ export const model = {
         },
         delivery: {
             list: deliveryList,
-            activeItem: deliveryList[0]
+            activeItem: deliveryList[3]
         }
     },
     isValidationOn: false,
@@ -106,6 +106,15 @@ export const model = {
     },
     closeModal(action) {
         this.isModalVisible = false;
+        this.infoState.pay.list.activeItem = payMethodsList[0];
+        const pickUp = this.infoState.delivery.list.find(item => item.delivery === 'pick-up');
+        const courier = this.infoState.delivery.list.find(item => item.delivery === 'courier');
+        if (action === 'delivery') {
+            this.infoState.delivery.list = this.infoState.delivery.list.map(item => {
+                item.checked = item.id === pickUp.id || item.id === courier.id;
+                return item;
+            });
+        }
         view.renderModal(action);
     },
     changeActiveItem(id, action) {
@@ -127,6 +136,11 @@ export const model = {
     },
     changeMethod(action, method) {
         this.deliveryMethod = method;
+        if (this.deliveryMethod === 'pick-up') {
+            this.infoState.delivery.activeItem = deliveryList[3];
+        } else {
+            this.infoState.delivery.activeItem = deliveryList[0];
+        }
         view.renderModal(action);
     },
     enableValidation() {

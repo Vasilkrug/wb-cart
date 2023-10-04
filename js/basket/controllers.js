@@ -109,7 +109,8 @@ export const setupModalListeners = () => {
     submitModalButton.addEventListener('click', () => {
         model.getActiveItem(action);
         model.closeModal(action);
-    })
+    });
+
     deliveryButtons.forEach(button => {
         button.addEventListener('click', () => {
             const method = button.dataset.method;
