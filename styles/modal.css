@@ -68,7 +68,7 @@
 .radio-label {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
 }
 
 .delivery-item .delete-icon {
@@ -78,16 +78,16 @@
 .radio-input {
     position: absolute;
     opacity: 0;
-    width: 22px;
-    height: 22px;
     z-index: -1;
 }
 
 .radio-checkbox {
     position: relative;
+    left: 2px;
+    top: 4px;
     display: block;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     border: 1px solid #C5C5C8;
     border-radius: 16px;
     cursor: pointer;
@@ -148,6 +148,7 @@
 
 .delivery-title {
     margin-bottom: 10px;
+    padding: 2px 1px 2px 1px;
 }
 
 
@@ -170,7 +171,7 @@
 .delivery-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 11px;
 }
 
 .delivery-item-wrapper {
@@ -180,6 +181,7 @@
 }
 
 .delivery-item {
+    padding: 4px 0px 8px 0px;;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -187,6 +189,10 @@
 
 .delivery-item label {
     align-items: flex-start;
+}
+
+.adress-item {
+    font-size: 16px;
 }
 
 @media (min-width: 768px) {
@@ -197,6 +203,7 @@
 
 @media (max-width: 768px) {
     .modal {
+        padding: 16px;
         top: 0;
         left: 0;
         width: 100%;
