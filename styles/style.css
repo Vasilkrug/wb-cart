@@ -24,6 +24,7 @@ section {
     align-items: center;
     height: 44px;
     font-family: "Segoe Bold", sans-serif;
+    line-height: 16px;
     background: #CB11AB;
     border-radius: 8px;
     color: #FFFFFF;
@@ -57,7 +58,7 @@ h2 {
 }
 
 .basket-title {
-    margin-top: 16px;
+    margin-top: 20px;
     margin-bottom: 24px;
 }
 
@@ -74,6 +75,7 @@ h2 {
 
 .select-all {
     letter-spacing: -0.1px;
+    line-height: 24px;
 }
 
 .toggle-arrow {
@@ -148,13 +150,13 @@ h2 {
     color: #C5C5C8;
 }
 
-@media (min-width: 1399px) {
-    .basket-title {
-        letter-spacing: -0.05em;
-    }
-}
-
 @media (min-width: 1024px) {
+    .basket-title {
+        letter-spacing: -0.01em;
+        line-height: 36px;
+        font-size: 28px;
+    }
+
     .checkbox:hover {
         background-color: #CB11AB;
         opacity: 0.5;

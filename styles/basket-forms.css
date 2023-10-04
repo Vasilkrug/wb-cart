@@ -49,16 +49,18 @@
 .basket-form-info {
     display: flex;
     flex-direction: column;
-    gap: 17px;
-
+    gap: 16px;
 }
 
 .point-of-issue-info {
     display: flex;
-    gap: 5px;
     font-size: 13px;
-    margin-top: 4px;
+    margin-top: 3px;
     line-height: 16px;
+}
+.rate {
+    margin-left: 4px;
+    margin-right: 8px;
 }
 
 .point-of-issue-address {
@@ -97,7 +99,7 @@
 .basket-form-delivery {
     background-color: #FFF !important;
     align-items: flex-start !important;
-    margin-top: 6px;
+    margin-top: 8px;
 }
 
 .basket-form-pay-method {
