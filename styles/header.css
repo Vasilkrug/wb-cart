@@ -115,10 +115,12 @@
     position: absolute;
     top: -7px;
     right: 5px;
-    width: 16px;
+    min-width: 16px;
     height: 16px;
+    padding: 1px 4px 0px 4px;
     background-color: #F55123;
-    border-radius: 50%;
+    border-radius: 16px;
+    font-family: "Segoe Bold", sans-serif;
     font-size: 10px;
     text-align: center;
 }

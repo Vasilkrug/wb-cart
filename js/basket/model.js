@@ -67,6 +67,7 @@ export const model = {
     },
     checkedItemToggle(index) {
         this.state[index].checked = !this.state[index].checked;
+        view.render();
     },
     setTotalPrice() {
         this.totalPrice = this.state.reduce((acc, item) => {

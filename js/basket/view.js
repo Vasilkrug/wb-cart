@@ -103,6 +103,7 @@ export const view = {
         }).join('');
         basketItemsList.innerHTML = html;
         this.renderMissingItems();
+        this.renderDeliveryDate();
         setupControllers();
     },
     renderPrice() {
@@ -115,7 +116,7 @@ export const view = {
         totalPrice.innerHTML = `${model.totalPrice.toLocaleString("ru-RU")} сом`;
         totalProduct.innerHTML = `${model.totalProduct} товаров`;
         noDiscountPrice.innerHTML = `${model.noDiscountPrice.toLocaleString("ru-RU")} сом`;
-        discount.innerHTML = `${model.totalPrice - model.noDiscountPrice}`;
+        discount.innerHTML = `${(model.totalPrice - model.noDiscountPrice).toLocaleString('ru-RU')}`;
         cartCounter.innerHTML = `${model.totalProduct}`;
         if (!model.totalProduct) {
             cartCounter.classList.add('hidden');
@@ -126,7 +127,7 @@ export const view = {
     renderPayBtn() {
         const confirmPayBtn = document.querySelector('.confirm-pay');
         if (confirmPayBtn.classList.contains('active-btn')) {
-            confirmPayBtn.innerHTML = `Оплатить ${model.totalPrice} сом`;
+            confirmPayBtn.innerHTML = `Оплатить ${model.totalPrice.toLocaleString('ru-RU')} сом`;
         } else {
             confirmPayBtn.innerHTML = `Заказать`;
         }
@@ -193,6 +194,34 @@ export const view = {
                         </li>`
         }).join('');
         missingItemsList.innerHTML = html;
+    },
+    renderDeliveryDate() {
+        const deliveryDate = document.querySelector('.delivery-date');
+        const deliveryDateNext = document.querySelector('.delivery-date-next');
+        const cases = model.state.find(item => item.alias === 'case');
+        const maxCasesCount = 184;
+        deliveryDate.innerHTML = !model.state.length || model.state.every(item => !item.checked) ? '' : `
+        <div class="basket-form-info-title">5—6 февраля</div>
+                                <div class="basket-form-images">
+                                    ${model.state.map(item => {
+                                        return item.checked ? `<div class="basket-form-img">
+                                        <img src=${item.img} alt="item">
+                                        <div class="item-count">
+                                         ${item.alias === 'case' && item.count >= maxCasesCount  ?
+                                           maxCasesCount : 
+                                           item.count}
+                                         </div>
+                                    </div>` : ''
+        }).join('')}
+                                </div>`;
+        deliveryDateNext.innerHTML = cases && (cases.count > maxCasesCount && cases.checked) ?
+            `<div class="basket-form-info-title">7—8 февраля</div>
+                                <div class="basket-form-images">
+                                    <div class="basket-form-img">
+                                        <img src=${cases.img} alt="case">
+                                        <div class="item-count">${cases.count - maxCasesCount}</div>
+                                    </div>
+                                </div>` : '';
     },
     renderPayList() {
         return `<div class="pay-list">

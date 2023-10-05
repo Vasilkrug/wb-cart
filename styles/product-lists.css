@@ -120,6 +120,7 @@
     stroke: #CB11AB;
     cursor: pointer;
 }
+
 .favourites-active path {
     fill: #CB11AB;
 }
