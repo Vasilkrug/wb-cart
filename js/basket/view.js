@@ -206,11 +206,13 @@ export const view = {
                                     ${model.state.map(item => {
                                         return item.checked ? `<div class="basket-form-img">
                                         <img src=${item.img} alt="item">
+                                        ${item.count > 1 ? `
                                         <div class="item-count">
                                          ${item.alias === 'case' && item.count >= maxCasesCount  ?
-                                           maxCasesCount : 
-                                           item.count}
+                                            maxCasesCount :
+                                            item.count}
                                          </div>
+                                        ` : ''}
                                     </div>` : ''
         }).join('')}
                                 </div>`;
