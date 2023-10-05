@@ -4,6 +4,20 @@ import {setupControllers, setupModalListeners} from './controllers.js';
 export const view = {
     render() {
         const basketItemsList = document.querySelector('.basket-items-list');
+        const selectAllLabel = document.querySelector('.select-all-label');
+        const hideInfo = document.querySelector('.hide-info');
+        const basketItemsSelection = document.querySelector('.basket-items-selection');
+
+        if (!model.state.length) {
+            selectAllLabel.style.display = 'none';
+            hideInfo.style.display = 'block';
+            basketItemsSelection.style.marginBottom = '16px'
+            hideInfo.innerHTML = `${model.totalProduct} товаров · ${model.totalPrice.toLocaleString('ru-RU')} сом`;
+        } else {
+            hideInfo.style.display = 'none';
+            basketItemsSelection.style.marginBottom = '0px';
+            selectAllLabel.style.display = 'flex';
+        }
         const html = model.state.map((item, index) => {
             const totalPrice = Math.floor(item.count * item.price);
             const discountPrice = Math.floor(totalPrice - (item.price * item.sale / 100 * item.count));
@@ -52,14 +66,18 @@ export const view = {
                                     </div>
                                     <div class="max-products" data-hidden=${remains <= 2 ? 'false' : 'true'}>Осталось ${remains} шт.</div>
                                     <div class="controls">
-                                        <svg class="like-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> 
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03396 4.05857C2.26589 4.75224 1.76684 5.83284 1.99493 7.42928C2.22332 9.02783 3.26494 10.6852 4.80436 12.3478C6.25865 13.9184 8.10962 15.4437 9.99996 16.874C11.8903 15.4437 13.7413 13.9184 15.1956 12.3478C16.735 10.6852 17.7766 9.02783 18.005 7.4293C18.233 5.83285 17.734 4.75224 16.9659 4.05856C16.1766 3.34572 15.055 3 14 3C12.1319 3 11.0923 4.08479 10.5177 4.68443C10.4581 4.7466 10.4035 4.80356 10.3535 4.85355C10.1582 5.04882 9.84166 5.04882 9.6464 4.85355C9.59641 4.80356 9.54182 4.7466 9.48224 4.68443C8.90757 4.08479 7.86797 3 5.99995 3C4.94495 3 3.82325 3.34573 3.03396 4.05857ZM2.36371 3.31643C3.37369 2.40427 4.75202 2 5.99995 2C8.07123 2 9.34539 3.11257 9.99996 3.77862C10.6545 3.11257 11.9287 2 14 2C15.2479 2 16.6262 2.40428 17.6362 3.31644C18.6674 4.24776 19.2668 5.66715 18.9949 7.5707C18.7233 9.47217 17.5149 11.3148 15.9294 13.0272C14.3355 14.7486 12.3064 16.3952 10.3 17.9C10.1222 18.0333 9.87773 18.0333 9.69995 17.9C7.69353 16.3952 5.66443 14.7485 4.0706 13.0272C2.48503 11.3148 1.27665 9.47217 1.00498 7.57072C0.733012 5.66716 1.33249 4.24776 2.36371 3.31643Z" fill="black"/> 
+                                        <button class="like" data-id=${item.id} data-action="state">
+                                        <svg class="like-icon ${item.favourites ? 'favourites-active' : ''}" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> 
+                                        <path d="M3.03396 4.05857C2.26589 4.75224 1.76684 5.83284 1.99493 7.42928C2.22332 9.02783 3.26494 10.6852 4.80436 12.3478C6.25865 13.9184 8.10962 15.4437 9.99996 16.874C11.8903 15.4437 13.7413 13.9184 15.1956 12.3478C16.735 10.6852 17.7766 9.02783 18.005 7.4293C18.233 5.83285 17.734 4.75224 16.9659 4.05856C16.1766 3.34572 15.055 3 14 3C12.1319 3 11.0923 4.08479 10.5177 4.68443C10.4581 4.7466 10.4035 4.80356 10.3535 4.85355C10.1582 5.04882 9.84166 5.04882 9.6464 4.85355C9.59641 4.80356 9.54182 4.7466 9.48224 4.68443C8.90757 4.08479 7.86797 3 5.99995 3C4.94495 3 3.82325 3.34573 3.03396 4.05857ZM2.36371 3.31643C3.37369 2.40427 4.75202 2 5.99995 2C8.07123 2 9.34539 3.11257 9.99996 3.77862C10.6545 3.11257 11.9287 2 14 2C15.2479 2 16.6262 2.40428 17.6362 3.31644C18.6674 4.24776 19.2668 5.66715 18.9949 7.5707C18.7233 9.47217 17.5149 11.3148 15.9294 13.0272C14.3355 14.7486 12.3064 16.3952 10.3 17.9C10.1222 18.0333 9.87773 18.0333 9.69995 17.9C7.69353 16.3952 5.66443 14.7485 4.0706 13.0272C2.48503 11.3148 1.27665 9.47217 1.00498 7.57072C0.733012 5.66716 1.33249 4.24776 2.36371 3.31643Z"/> 
                                     </svg> 
-                                        <svg class="delete-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> 
+                                        </button>
+                                        <button class="delete" data-id=${item.id} data-action="state">
+                                        <svg class="delete-icon" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> 
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 5C2.5 4.72386 2.72386 4.5 3 4.5H17C17.2761 4.5 17.5 4.72386 17.5 5C17.5 5.27614 17.2761 5.5 17 5.5H3C2.72386 5.5 2.5 5.27614 2.5 5Z" fill="black"/> 
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M3.4584 4.5H16.5059L15.6411 15.6926C15.5405 16.9947 14.4546 18 13.1486 18H6.84639C5.54299 18 4.45829 16.9986 4.35435 15.6994L3.4584 4.5ZM4.5416 5.5L5.35117 15.6196C5.41353 16.3992 6.06435 17 6.84639 17H13.1486C13.9322 17 14.5837 16.3968 14.6441 15.6155L15.4256 5.5H4.5416Z" fill="black"/> 
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M13 5.5H7V3.46875C7 2.65758 7.65758 2 8.46875 2H11.5312C12.3424 2 13 2.65758 13 3.46875V5.5ZM8.46875 3C8.20987 3 8 3.20987 8 3.46875V4.5H12V3.46875C12 3.20987 11.7901 3 11.5312 3H8.46875Z" fill="black"/> 
                                         </svg>
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="basket-item-price">
@@ -84,6 +102,7 @@ export const view = {
                         </li>`
         }).join('');
         basketItemsList.innerHTML = html;
+        this.renderMissingItems();
         setupControllers();
     },
     renderPrice() {
@@ -131,10 +150,13 @@ export const view = {
     },
     renderMissingItems() {
         const missingItemsList = document.querySelector('.missing-items-list');
-        const html = model.state.map((item) => {
+        const title = document.querySelector('.missing-items-title');
+
+        title.innerHTML = `Отсутствуют · ${model.missingState.length} товара`;
+        const html = model.missingState.map((item) => {
             return `<li class="basket-item missing-item">
                             <div class="basket-item-info-wrapper">
-                                    <img class="basket-item-img" src=${item.missingImg} alt="t-shirt">
+                                    <img class="basket-item-img" src=${item.img} alt="t-shirt">
                                 <div class="basket-item-text missing-item-text">
                                     <p class="item-name">${item.name}</p>
                                     <div class=${item.characters.length ? "basket-item-characters" : "basket-item-characters-hide"}>
@@ -147,14 +169,18 @@ export const view = {
                             <div class="basket-item-controls-wrapper">
                                 <div class="basket-item-controls missing-controls">
                                     <div class="controls">
-                                        <svg class="like-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> 
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03396 4.05857C2.26589 4.75224 1.76684 5.83284 1.99493 7.42928C2.22332 9.02783 3.26494 10.6852 4.80436 12.3478C6.25865 13.9184 8.10962 15.4437 9.99996 16.874C11.8903 15.4437 13.7413 13.9184 15.1956 12.3478C16.735 10.6852 17.7766 9.02783 18.005 7.4293C18.233 5.83285 17.734 4.75224 16.9659 4.05856C16.1766 3.34572 15.055 3 14 3C12.1319 3 11.0923 4.08479 10.5177 4.68443C10.4581 4.7466 10.4035 4.80356 10.3535 4.85355C10.1582 5.04882 9.84166 5.04882 9.6464 4.85355C9.59641 4.80356 9.54182 4.7466 9.48224 4.68443C8.90757 4.08479 7.86797 3 5.99995 3C4.94495 3 3.82325 3.34573 3.03396 4.05857ZM2.36371 3.31643C3.37369 2.40427 4.75202 2 5.99995 2C8.07123 2 9.34539 3.11257 9.99996 3.77862C10.6545 3.11257 11.9287 2 14 2C15.2479 2 16.6262 2.40428 17.6362 3.31644C18.6674 4.24776 19.2668 5.66715 18.9949 7.5707C18.7233 9.47217 17.5149 11.3148 15.9294 13.0272C14.3355 14.7486 12.3064 16.3952 10.3 17.9C10.1222 18.0333 9.87773 18.0333 9.69995 17.9C7.69353 16.3952 5.66443 14.7485 4.0706 13.0272C2.48503 11.3148 1.27665 9.47217 1.00498 7.57072C0.733012 5.66716 1.33249 4.24776 2.36371 3.31643Z" fill="black"/> 
+                                        <button class="like" data-id=${item.id} data-action="missingState">
+                                        <svg class="like-icon ${item.favourites ? 'favourites-active' : ''}" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> 
+                                    <path d="M3.03396 4.05857C2.26589 4.75224 1.76684 5.83284 1.99493 7.42928C2.22332 9.02783 3.26494 10.6852 4.80436 12.3478C6.25865 13.9184 8.10962 15.4437 9.99996 16.874C11.8903 15.4437 13.7413 13.9184 15.1956 12.3478C16.735 10.6852 17.7766 9.02783 18.005 7.4293C18.233 5.83285 17.734 4.75224 16.9659 4.05856C16.1766 3.34572 15.055 3 14 3C12.1319 3 11.0923 4.08479 10.5177 4.68443C10.4581 4.7466 10.4035 4.80356 10.3535 4.85355C10.1582 5.04882 9.84166 5.04882 9.6464 4.85355C9.59641 4.80356 9.54182 4.7466 9.48224 4.68443C8.90757 4.08479 7.86797 3 5.99995 3C4.94495 3 3.82325 3.34573 3.03396 4.05857ZM2.36371 3.31643C3.37369 2.40427 4.75202 2 5.99995 2C8.07123 2 9.34539 3.11257 9.99996 3.77862C10.6545 3.11257 11.9287 2 14 2C15.2479 2 16.6262 2.40428 17.6362 3.31644C18.6674 4.24776 19.2668 5.66715 18.9949 7.5707C18.7233 9.47217 17.5149 11.3148 15.9294 13.0272C14.3355 14.7486 12.3064 16.3952 10.3 17.9C10.1222 18.0333 9.87773 18.0333 9.69995 17.9C7.69353 16.3952 5.66443 14.7485 4.0706 13.0272C2.48503 11.3148 1.27665 9.47217 1.00498 7.57072C0.733012 5.66716 1.33249 4.24776 2.36371 3.31643Z" fill="black"/> 
                                     </svg> 
-                                        <svg class="delete-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> 
+                                        </button>
+                                        <button class="delete" data-id=${item.id} data-action="missingState">
+                                        <svg class="delete-icon" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> 
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 5C2.5 4.72386 2.72386 4.5 3 4.5H17C17.2761 4.5 17.5 4.72386 17.5 5C17.5 5.27614 17.2761 5.5 17 5.5H3C2.72386 5.5 2.5 5.27614 2.5 5Z" fill="black"/> 
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M3.4584 4.5H16.5059L15.6411 15.6926C15.5405 16.9947 14.4546 18 13.1486 18H6.84639C5.54299 18 4.45829 16.9986 4.35435 15.6994L3.4584 4.5ZM4.5416 5.5L5.35117 15.6196C5.41353 16.3992 6.06435 17 6.84639 17H13.1486C13.9322 17 14.5837 16.3968 14.6441 15.6155L15.4256 5.5H4.5416Z" fill="black"/> 
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M13 5.5H7V3.46875C7 2.65758 7.65758 2 8.46875 2H11.5312C12.3424 2 13 2.65758 13 3.46875V5.5ZM8.46875 3C8.20987 3 8 3.20987 8 3.46875V4.5H12V3.46875C12 3.20987 11.7901 3 11.5312 3H8.46875Z" fill="black"/> 
                                         </svg>
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="basket-item-price hidden">
@@ -183,8 +209,8 @@ export const view = {
     </div>`
     },
     renderDelivery() {
-        let delivery = ''
-        let pickUprateHtml = ''
+        let delivery = '';
+        let pickUprateHtml = '';
         model.infoState.delivery.list.forEach(item => {
             if (item.delivery === model.deliveryMethod) {
                 if (item.delivery === 'pick-up') {
@@ -192,7 +218,7 @@ export const view = {
                                     <img src="assets/icons/star.svg" alt="star">
                                      <span class="rate">${item.rate}</span>
                                      <span class="gray">Пункт выдачи</span>
-                                   </div>`
+                                   </div>`;
                 }
                 delivery += `
                 <div class="delivery-item-wrapper">
@@ -211,8 +237,7 @@ export const view = {
                       <path fill-rule="evenodd" clip-rule="evenodd" d="M13 5.5H7V3.46875C7 2.65758 7.65758 2 8.46875 2H11.5312C12.3424 2 13 2.65758 13 3.46875V5.5ZM8.46875 3C8.20987 3 8 3.20987 8 3.46875V4.5H12V3.46875C12 3.20987 11.7901 3 11.5312 3H8.46875Z" fill="black"/> 
                 </svg>
                 </div>
-                </div>
-                `
+                </div>`;
             }
         })
         return `<div class="delivery-list-wrapper">
@@ -224,7 +249,7 @@ export const view = {
         <div class="delivery-list">
         ${delivery}
         </div>
-       </div>`
+       </div>`;
     },
     renderActiveDeliveryItem(item) {
         const addressText = document.querySelector('.address-text');
@@ -233,8 +258,8 @@ export const view = {
         const basketInfoDelivery = document.querySelector('.basket-info-delivery');
         const deliveryMethod = document.querySelector('.delivery-method');
 
-        addressText.innerHTML = item.address
-        pointOfIssueAddress.innerHTML = item.address
+        addressText.innerHTML = item.address;
+        pointOfIssueAddress.innerHTML = item.address;
 
         if (item.delivery === 'pick-up') {
             rate.innerHTML = item.rate;
@@ -277,7 +302,7 @@ export const view = {
         `
         payBlocks.forEach(block => {
             block.innerHTML = html;
-        })
+        });
     },
     renderInputsErros() {
         const inn = document.querySelector('.inn');
@@ -286,13 +311,12 @@ export const view = {
         Object.entries(model.inputFields).forEach(([field, value]) => {
             const error = document.querySelector(`.${field}-error`);
             error.innerHTML = value.error;
-        })
+        });
     },
     init() {
         this.render();
         this.renderPrice();
         this.renderPayBtn();
         this.renderHideInfo();
-        this.renderMissingItems();
     },
 }

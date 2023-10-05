@@ -1,8 +1,9 @@
-import {basketData, deliveryList, payMethodsList} from '../data.js';
+import {basketData, deliveryList, missingData, payMethodsList} from '../data.js';
 import {view} from './view.js';
 
 export const model = {
     state: basketData,
+    missingState: missingData,
     totalPrice: 0,
     totalProduct: 0,
     noDiscountPrice: 0,
@@ -56,7 +57,6 @@ export const model = {
             this.state[index].count = this.state[index].count -= 1;
             view.render();
         }
-
     },
     checkedAllItemsToggle(target) {
         this.state = this.state.map(item => {
@@ -184,4 +184,22 @@ export const model = {
         }
         view.renderInputsErros();
     },
+    deleteItem(id, state) {
+        this[state] = this[state].filter(item => item.id !== id);
+        if (state === 'state') {
+            this.setTotalPrice();
+            this.setTotalProduct();
+            this.setNoDiscountPrice();
+        }
+        view.render();
+    },
+    addToFavouriteItem(id, state) {
+        this[state] = this[state].map(item => {
+            if (item.id === id) {
+                item.favourites = !item.favourites;
+            }
+            return item;
+        });
+        view.render();
+    }
 }

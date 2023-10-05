@@ -120,6 +120,9 @@
     stroke: #CB11AB;
     cursor: pointer;
 }
+.favourites-active path {
+    fill: #CB11AB;
+}
 
 .delete-icon:hover {
     stroke: #F55123;

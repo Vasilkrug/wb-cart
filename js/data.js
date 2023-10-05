@@ -12,6 +12,7 @@ export const basketData = [
         checked: false,
         count: 1,
         remains: 3,
+        favourites:false,
     },
     {
         id: 2,
@@ -26,6 +27,7 @@ export const basketData = [
         checked: false,
         count: 1,
         remains: 300,
+        favourites:false,
     },
     {
         id: 3,
@@ -40,6 +42,31 @@ export const basketData = [
         checked: false,
         count: 1,
         remains: 3,
+        favourites:false,
+    },
+];
+
+export const missingData = [
+    {
+        id: 1,
+        name: 'Футболка UZcotton мужская',
+        img: 'assets/images/missing-t-shirt.png',
+        characters: ['Цвет: белый', 'Размер: 56'],
+        favourites:false,
+    },
+    {
+        id: 2,
+        name: 'Силиконовый чехол картхолдер (отверстия) для карт, прозрачный кейс бампер на Apple iPhone XR, MobiSafe',
+        img: 'assets/images/missing-case.png',
+        characters: ['Цвет: прозрачный'],
+        favourites:false,
+    },
+    {
+        id: 3,
+        name: 'Карандаши цветные Faber-Castell "Замок", набор 24 цвета, заточенные, шестигранные, <br>Faber-Castell',
+        img: 'assets/images/missing-pencils.png',
+        characters: [],
+        favourites:false,
     },
 ];
 

@@ -6,6 +6,25 @@ export const setupControllers = () => {
     const selectItemsCheckbox = document.querySelectorAll('[data-index]');
     const plusBtns = document.querySelectorAll('[data-direction="plus"]');
     const minusBtns = document.querySelectorAll('[data-direction="minus"]');
+    const likeBtns = document.querySelectorAll('.like');
+    const deleteBtns = document.querySelectorAll('.delete');
+
+    likeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = Number(btn.dataset.id);
+            const action = btn.dataset.action;
+            console.log(action)
+            model.addToFavouriteItem(id, action)
+        })
+    });
+
+    deleteBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const deleteId = Number(btn.dataset.id);
+            const action = btn.dataset.action;
+            model.deleteItem(deleteId, action)
+        })
+    })
 
     selectItemsCheckbox.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
@@ -15,7 +34,6 @@ export const setupControllers = () => {
             model.setNoDiscountPrice();
         })
     });
-
 
     plusBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -35,6 +53,7 @@ export const setupControllers = () => {
         });
     });
 };
+
 const arrow = document.querySelector('.toggle-arrow');
 const missingItemsArrow = document.querySelector('.missing-items-arrow');
 const missingItemsList = document.querySelector('.missing-items-list');
