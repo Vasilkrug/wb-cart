@@ -106,7 +106,7 @@ export const model = {
     },
     closeModal(action) {
         this.isModalVisible = false;
-        this.infoState.pay.list.activeItem = payMethodsList[0];
+        this.infoState.pay.activeItem = payMethodsList[0];
         const pickUp = this.infoState.delivery.list.find(item => item.delivery === 'pick-up');
         const courier = this.infoState.delivery.list.find(item => item.delivery === 'courier');
         if (action === 'delivery') {
@@ -114,6 +114,11 @@ export const model = {
                 item.checked = item.id === pickUp.id || item.id === courier.id;
                 return item;
             });
+        } else {
+            this.infoState.pay.list = this.infoState.pay.list.map(item => {
+                item.checked = item.id === 0;
+                return item
+            })
         }
         view.renderModal(action);
     },
@@ -136,17 +141,13 @@ export const model = {
     },
     changeMethod(action, method) {
         this.deliveryMethod = method;
-        if (this.deliveryMethod === 'pick-up') {
-            this.infoState.delivery.activeItem = deliveryList[3];
-        } else {
-            this.infoState.delivery.activeItem = deliveryList[0];
-        }
+        this.infoState.delivery.activeItem = this.deliveryMethod === 'pick-up' ? deliveryList[3] : deliveryList[0];
+        this.infoState.pay.activeItem = payMethodsList[0];
         view.renderModal(action);
     },
     enableValidation() {
         this.isValidationOn = true;
         this.validation();
-        view.renderInputsErros();
     },
     setInputValue(field, value) {
         this.inputFields[field].inputValue = value;
@@ -166,16 +167,16 @@ export const model = {
                         this.inputFields[field].error = NameAndLastNamePattern.test(value.inputValue) ? '' : 'Укажите имя';
                         return;
                     case 'lastName':
-                        this.inputFields[field].error = NameAndLastNamePattern.test(value.inputValue) ? '' : 'Укажите фамилию';
+                        this.inputFields[field].error = NameAndLastNamePattern.test(value.inputValue) ? '' : 'Введите фамилию';
                         return;
                     case 'email':
-                        this.inputFields[field].error = EmailPattern.test(value.inputValue) ? '' : 'Укажите почту';
+                        this.inputFields[field].error = EmailPattern.test(value.inputValue) ? '' : 'Проверьте адрес электронной почты';
                         return;
                     case 'phone':
-                        this.inputFields[field].error = phonePattern.test(value.inputValue) ? '' : 'Укажите номер телефона';
+                        this.inputFields[field].error = phonePattern.test(value.inputValue) ? '' : 'Формат +9 999 999 99 99';
                         return;
                     case 'inn':
-                        this.inputFields[field].error = innPattern.test(value.inputValue) && value.inputValue.length === 14 ? '' : 'Укажите ИНН';
+                        this.inputFields[field].error = innPattern.test(value.inputValue) && value.inputValue.length === 14 ? '' : 'Проверьте ИНН';
                         return;
                 }
 

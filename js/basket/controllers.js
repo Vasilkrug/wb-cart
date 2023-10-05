@@ -120,9 +120,20 @@ export const setupModalListeners = () => {
 };
 
 const formInputs = document.querySelectorAll('.text-input');
+const form = document.querySelector('.form-wrapper');
 
 confirmPayBtn.addEventListener('click', () => {
     model.enableValidation();
+    const hasErrors = Object.entries(model.inputFields)
+        .some(([field, value]) => value.error !== '');
+    const rect = form.getBoundingClientRect();
+    if (hasErrors) {
+        window.scrollTo({
+            top: rect.y,
+            left: rect.x,
+            behavior: 'smooth'
+        });
+    }
 });
 
 formInputs.forEach(input => {

@@ -286,7 +286,6 @@ export const view = {
         Object.entries(model.inputFields).forEach(([field, value]) => {
             const error = document.querySelector(`.${field}-error`);
             error.innerHTML = value.error;
-
         })
     },
     init() {
