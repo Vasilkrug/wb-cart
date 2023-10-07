@@ -135,6 +135,13 @@ export const view = {
         } else {
             confirmPayBtn.innerHTML = `Заказать`;
         }
+        if (model.totalPrice === 0) {
+            confirmPayBtn.classList.add('not-allowed');
+            confirmPayBtn.setAttribute('disabled', 'true')
+        } else {
+            confirmPayBtn.classList.remove('not-allowed');
+            confirmPayBtn.removeAttribute('disabled');
+        }
     },
     renderHideInfo() {
         const arrow = document.querySelector('.toggle-arrow');

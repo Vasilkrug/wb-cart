@@ -31,6 +31,10 @@ section {
     cursor: pointer;
 }
 
+.not-allowed {
+    cursor: not-allowed;
+    background-color: #A0A0A4;
+}
 .wrapper {
     min-height: 100%;
     display: flex;
