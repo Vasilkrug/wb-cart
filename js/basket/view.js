@@ -112,16 +112,20 @@ export const view = {
         const noDiscountPrice = document.querySelector('.no-discount');
         const discount = document.querySelector('.discount');
         const cartCounter = document.querySelector('.cart-counter');
+        const mobileCounter = document.querySelector('.mobile-counter');
 
         totalPrice.innerHTML = `${model.totalPrice.toLocaleString("ru-RU")} сом`;
         totalProduct.innerHTML = `${model.totalProduct} товаров`;
         noDiscountPrice.innerHTML = `${model.noDiscountPrice.toLocaleString("ru-RU")} сом`;
         discount.innerHTML = `${(model.totalPrice - model.noDiscountPrice).toLocaleString('ru-RU')}`;
         cartCounter.innerHTML = `${model.totalProduct}`;
+        mobileCounter.innerHTML = `${model.totalProduct}`;
         if (!model.totalProduct) {
             cartCounter.classList.add('hidden');
+            mobileCounter.classList.add('hidden');
         } else {
             cartCounter.classList.remove('hidden');
+            mobileCounter.classList.remove('hidden');
         }
     },
     renderPayBtn() {
@@ -204,13 +208,13 @@ export const view = {
         <div class="basket-form-info-title">5—6 февраля</div>
                                 <div class="basket-form-images">
                                     ${model.state.map(item => {
-                                        return item.checked ? `<div class="basket-form-img">
+            return item.checked ? `<div class="basket-form-img">
                                         <img src=${item.img} alt="item">
                                         ${item.count > 1 ? `
                                         <div class="item-count">
-                                         ${item.alias === 'case' && item.count >= maxCasesCount  ?
-                                            maxCasesCount :
-                                            item.count}
+                                         ${item.alias === 'case' && item.count >= maxCasesCount ?
+                maxCasesCount :
+                item.count}
                                          </div>
                                         ` : ''}
                                     </div>` : ''
