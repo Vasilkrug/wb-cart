@@ -212,11 +212,12 @@ h2 {
 
     .mobile-navigation-link {
         position: relative;
+        display: block;
     }
 
-    .mobile-navigation-link .cart-counter {
-        top: 10px;
-        right: -35px;
+    .mobile-navigation-link > .cart-counter {
+        top: -5px;
+        right: -10px;
         color: #FFF;
     }
 }
