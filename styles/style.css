@@ -63,7 +63,7 @@ h2 {
 }
 
 .basket-items-wrapper {
-    margin-bottom: 33px;
+    margin-bottom: 35px;
 }
 
 .basket-items-selection {
@@ -211,8 +211,8 @@ h2 {
     }
 
     .mobile-navigation-link .cart-counter {
-        top: -5px;
-        right: -6px;
+        top: 10px;
+        right: -35px;
         color: #FFF;
     }
 }

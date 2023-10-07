@@ -16,7 +16,7 @@
     line-height: 32px;
     width: 100%;
     letter-spacing: -0.01em;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 
 .total-price {
@@ -32,8 +32,12 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
+.total-sale-info:nth-of-type(4){
+    margin-bottom: 0;
+}
+
 
 .total-sale-info span {
     display: block;
@@ -43,15 +47,16 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
-    margin-top: 27px;
+    margin-top: 24px;
 }
 
 .basket-info-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
+
 
 .change {
     cursor: pointer;
@@ -83,7 +88,7 @@
 
 .green-delivery {
     position: relative;
-    margin-top: 12px;
+    margin-top: 14px;
     padding: 8px 8px 12px 8px;
     display: flex;
     align-items: center;
@@ -159,7 +164,7 @@
 }
 
 .checkbox-pay-block {
-    margin-top: 10px;
+    margin-top: 9px;
     font-size: 14px;
     padding: 8px 8px 12px 8px;
     background-color: #F6F6FA;

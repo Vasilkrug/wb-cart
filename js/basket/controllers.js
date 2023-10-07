@@ -148,7 +148,7 @@ confirmPayBtn.addEventListener('click', () => {
     const rect = form.getBoundingClientRect();
     if (hasErrors) {
         window.scrollTo({
-            top: rect.y,
+            top: form.offsetTop,
             left: rect.x,
             behavior: 'smooth'
         });
