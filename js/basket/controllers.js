@@ -157,8 +157,13 @@ confirmPayBtn.addEventListener('click', () => {
 
 formInputs.forEach(input => {
     const name = input.name;
+    const textPattern = /[a-zа-яё]/i;
     input.addEventListener('input', () => {
-        const value = input.value;
+        let value = input.value;
+        if (name === 'phone'){
+            value = [...value].filter(item => !textPattern.test(item)).join('');
+            input.value = value;
+        }
         model.setInputValue(name, value);
     });
 });
